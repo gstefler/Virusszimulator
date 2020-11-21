@@ -1,3 +1,0 @@
-/home/stefler/Documents/prog1/NHF/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/stefler/Documents/prog1/NHF/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/stefler/Documents/prog1/NHF/cmake-build-debug/CMakeFiles/NHF.dir
