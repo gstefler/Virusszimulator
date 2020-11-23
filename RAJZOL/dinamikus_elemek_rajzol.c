@@ -17,6 +17,13 @@ void exit_gomb(SDL_Renderer* renderer, bool hower){
     }
 }
 
+static void ertek_stringbe_masol(char* ide, char* const ellenorzo){
+    if (atoi(ellenorzo) != 0)
+        sprintf(ide, "%d", atoi(ellenorzo));
+    else
+        sprintf(ide, "-");
+}
+
 void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const melyik){
     SDL_Color vilagos = {200, 200, 200, 255};
     SDL_Color vilagos_hal = {200, 200, 200, 150};
@@ -67,28 +74,14 @@ void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const mely
         case Ido:
             rectangleRGBA(renderer, W / 2 + 130, y1 + 420, x2 - 90, y1 + 455, 220, 220, 220, 220);
             break;
-        case Semmi:
-            break;
     }
 
     //Bevitt értékek kiírása
     char nep[4 + 1], sug[2 + 1], szaz[3 + 1], ido[3 + 1];
-    if (atoi(bevstring.nep) != 0)
-        sprintf(nep, "%d", atoi(bevstring.nep));
-    else
-        sprintf(nep, "-");
-    if (atoi(bevstring.sug) != 0)
-        sprintf(sug, "%d", atoi(bevstring.sug));
-    else
-        sprintf(sug, "-");
-    if (atoi(bevstring.szaz) != 0)
-        sprintf(szaz, "%d", atoi(bevstring.szaz));
-    else
-        sprintf(szaz, "-");
-    if (atoi(bevstring.ido) != 0)
-        sprintf(ido, "%d", atoi(bevstring.ido));
-    else
-        sprintf(ido, "-");
+    ertek_stringbe_masol(nep, bevstring.nep);
+    ertek_stringbe_masol(sug, bevstring.sug);
+    ertek_stringbe_masol(szaz, bevstring.szaz);
+    ertek_stringbe_masol(ido, bevstring.ido);
     kiir(renderer, betutipus[0].tipus, vilagos, nep, W / 2 + 140, y1 + 202);
     kiir(renderer, betutipus[0].tipus, vilagos, sug, W / 2 + 140, y1 + 277);
     kiir(renderer, betutipus[0].tipus, vilagos, szaz, W / 2 + 140, y1 + 352);

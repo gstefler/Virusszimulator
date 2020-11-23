@@ -74,18 +74,23 @@ static bool nincs_nulla(Bevstring const bevstring){
     return (atoi(bevstring.nep) != 0 && atoi(bevstring.sug) != 0 && atoi(bevstring.szaz) != 0);
 }
 
-void inditas(Szim* szim, int melyik, Bevstring const bevstring, bool* stop){
+void inditas(Szim* szim, int melyik, Bevstring bev, bool* stop){
     if (beallit){
         int x = W / 6 * 2;
         int y = H - 200;
-        if (katt(EX, EY, x + 20, x + 20 + 200, y - 60, y - 20) && nincs_nulla(bevstring)){
+        if (katt(EX, EY, x + 20, x + 20 + 200, y - 60, y - 20) && nincs_nulla(bev)){
             szim[melyik].all = true;
-            szim[melyik].nepmeret = atoi(bevstring.nep);
-            szim[melyik].virus.r = atoi(bevstring.sug);
-            szim[melyik].virus.p = atoi(bevstring.szaz) / 100.0;
-            szim[melyik].virus.recover = atoi(bevstring.ido);
+            szim[melyik].nepmeret = atoi(bev.nep);
+            szim[melyik].virus.r = atoi(bev.sug);
+            szim[melyik].virus.p = atoi(bev.szaz) / 100.0;
+            szim[melyik].virus.recover = atoi(bev.ido);
             nepvaltozat(&szim[melyik]);
             beallit = false;
+            *stop = false;
+            bev.nep[0] = '\0';
+            bev.sug[0] = '\0';
+            bev.szaz[0] = '\0';
+            bev.ido[0] = '\0';
         }
     }
 }

@@ -39,8 +39,6 @@ static void egy_karakter_hozzafuz(char* ehhez, char const ezt){
 }
 
 static void str_eggyel_csokkent(char* be){
-    if (strlen(be) <= 0)
-        return;
     be[strlen(be) - 1] = '\0';
 }
 
@@ -76,7 +74,7 @@ void bevisz(Szim* szim, Bevstring* bevstring, Uint32 szam_be){
     //***********************
 
     //A beállításokban az enter gomb kezelése
-    if (szam_be == SDLK_RETURN){
+    if (szam_be == SDLK_RETURN || szam_be == SDLK_KP_ENTER){
         switch (bevitel) {
             case Nepesseg:
                 bevitel = Sugar;

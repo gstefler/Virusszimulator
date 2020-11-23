@@ -79,7 +79,7 @@ int main(int argc, char *argv[]){
             case SDL_KEYUP:
                 if (beallit && bevitel != Semmi && billentyutochar(ev.key.keysym.sym) >= '0'
                 && billentyutochar(ev.key.keysym.sym) <= '9' || ev.key.keysym.sym == SDLK_RETURN
-                || ev.key.keysym.sym == SDLK_BACKSPACE){
+                || ev.key.keysym.sym == SDLK_BACKSPACE || ev.key.keysym.sym == SDLK_KP_ENTER){
                     bevisz(szim, &bev, ev.key.keysym.sym);
                 }
                 if (ev.key.keysym.sym == SDLK_ESCAPE){
