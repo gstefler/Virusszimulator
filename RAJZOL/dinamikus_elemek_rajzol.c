@@ -17,7 +17,7 @@ void exit_gomb(SDL_Renderer* renderer, bool hower){
     }
 }
 
-void beallitas(SDL_Renderer* renderer, Bevstring* const bevstring, int const melyik){
+void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const melyik){
     SDL_Color vilagos = {200, 200, 200, 255};
     SDL_Color vilagos_hal = {200, 200, 200, 150};
     int x1 = W / 6 * 2;
@@ -72,21 +72,21 @@ void beallitas(SDL_Renderer* renderer, Bevstring* const bevstring, int const mel
     }
 
     //Bevitt értékek kiírása
-    char nep[5], sug[3], szaz[3], ido[4];
-    if (atoi(bevstring->nep) != 0)
-        sprintf(nep, "%d", atoi(bevstring->nep));
+    char nep[4 + 1], sug[2 + 1], szaz[3 + 1], ido[3 + 1];
+    if (atoi(bevstring.nep) != 0)
+        sprintf(nep, "%d", atoi(bevstring.nep));
     else
         sprintf(nep, "-");
-    if (atoi(bevstring->sug) != 0)
-        sprintf(sug, "%d", atoi(bevstring->sug));
+    if (atoi(bevstring.sug) != 0)
+        sprintf(sug, "%d", atoi(bevstring.sug));
     else
         sprintf(sug, "-");
-    if (atoi(bevstring->szaz) != 0)
-        sprintf(szaz, "%d", atoi(bevstring->szaz));
+    if (atoi(bevstring.szaz) != 0)
+        sprintf(szaz, "%d", atoi(bevstring.szaz));
     else
         sprintf(szaz, "-");
-    if (atoi(bevstring->ido) != 0)
-        sprintf(ido, "%d", atoi(bevstring->ido));
+    if (atoi(bevstring.ido) != 0)
+        sprintf(ido, "%d", atoi(bevstring.ido));
     else
         sprintf(ido, "-");
     kiir(renderer, betutipus[0].tipus, vilagos, nep, W / 2 + 140, y1 + 202);

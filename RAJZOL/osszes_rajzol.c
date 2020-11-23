@@ -16,7 +16,7 @@ static void draw_gradient(SDL_Renderer *renderer){
 }
 SDL_Color sotet = {22, 22, 22};
 
-void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring* const bevstring, int melyik){
+void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstring, int melyik){
     //Rajzolás előtti felkészülés
     SDL_SetRenderDrawColor(renderer,22,22,22,255);
     SDL_RenderClear(renderer);

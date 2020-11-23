@@ -24,15 +24,11 @@ int main(int argc, char *argv[]){
     betutipus[2].meret = 40;
     betutipus[3].meret = 12;
 
-    Bevstring* bevstring = (Bevstring*)malloc(sizeof(Bevstring));
-    bevstring->nep = (char*)malloc(7 * sizeof(char));
-    bevstring->sug = (char*)malloc(7 * sizeof(char));
-    bevstring->szaz = (char*)malloc(7 * sizeof(char));
-    bevstring->ido = (char*)malloc(7 * sizeof(char));
-    bevstring->nep[0] = '\0';
-    bevstring->sug[0] = '\0';
-    bevstring->szaz[0] = '\0';
-    bevstring->ido[0] = '\0';
+    Bevstring bev;
+    bev.nep[0] = '\0';
+    bev.sug[0] = '\0';
+    bev.szaz[0] = '\0';
+    bev.ido[0] = '\0';
 
     foglal(&szim);
     init_SDL();
@@ -78,12 +74,13 @@ int main(int argc, char *argv[]){
                 ujraindit(szim);
                 uj(szim, &stop, &melyik);
                 bevitel_valaszt();
-                inditas(szim, melyik, bevstring, &stop);
+                inditas(szim, melyik, bev, &stop);
                 break;
             case SDL_KEYUP:
-                if (beallit && bevitel != Semmi && ev.key.keysym.sym <= 57 && ev.key.keysym.sym >= 48
-                || ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_BACKSPACE){
-                    bevisz(szim, bevstring, ev.key.keysym.sym);
+                if (beallit && bevitel != Semmi && billentyutochar(ev.key.keysym.sym) >= '0'
+                && billentyutochar(ev.key.keysym.sym) <= '9' || ev.key.keysym.sym == SDLK_RETURN
+                || ev.key.keysym.sym == SDLK_BACKSPACE){
+                    bevisz(szim, &bev, ev.key.keysym.sym);
                 }
                 if (ev.key.keysym.sym == SDLK_ESCAPE){
                     if (beallit)
@@ -99,7 +96,7 @@ int main(int argc, char *argv[]){
                 }
                 break;
             case SDL_USEREVENT:
-                rajzolas(renderer, szim, bevstring, melyik);
+                rajzolas(renderer, szim, bev, melyik);
                 if (!stop){
                     if (s++ < 1000 / fps) {
                         szimulal(szim, false);
@@ -116,11 +113,7 @@ int main(int argc, char *argv[]){
                 break;
         }
     }
-    free(bevstring->nep);
-    free(bevstring->sug);
-    free(bevstring->szaz);
-    free(bevstring->ido);
-    free(bevstring);
+
     SDL_DestroyRenderer(renderer);
     renderer = NULL;
     SDL_DestroyWindow(window);

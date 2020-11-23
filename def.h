@@ -102,7 +102,7 @@ typedef struct Betutipus{
 }Betutipus;
 
 typedef struct Bevstring{
-    char *nep, *sug, *szaz, *ido;
+    char nep[4 + 1], sug[2 + 1], szaz[3 + 1], ido[3 + 1];
 }Bevstring;
 
 typedef enum Bevitel {

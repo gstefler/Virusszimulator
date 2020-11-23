@@ -5,7 +5,7 @@
 #include "../globalis_fvek.h"
 
 void exit_gomb(SDL_Renderer* renderer, bool hower);
-void beallitas(SDL_Renderer* renderer, Bevstring* const bevstring, int const melyik);
+void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const melyik);
 void valt_gomb(SDL_Renderer* renderer, Szim* const szim, int i);
 void hozzaad_gomb(SDL_Renderer* renderer, Szim* const szim, int i);
 void ujraindit_gomb(SDL_Renderer* renderer, Szim* const szim, int i);
