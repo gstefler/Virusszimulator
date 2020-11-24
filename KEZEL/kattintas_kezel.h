@@ -11,6 +11,6 @@ void torol(Szim* szim);
 void ujraindit(Szim* szim);
 void uj(Szim* szim, bool* stop, int* melyik);
 void bevitel_valaszt(void);
-void inditas(Szim* szim, int melyik, Bevstring const bevstring, bool* stop);
+void inditas(Szim* szim, int melyik, Bevstring* bevstring, bool* stop);
 
 #endif

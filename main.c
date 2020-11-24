@@ -38,20 +38,6 @@ int main(int argc, char *argv[]){
     SDL_Renderer* renderer;
     create(&window, &renderer);
 
-    /*
-    szim->all = true;
-    szim->virus = (Virus){40, 0.3, 8};
-    szim->nepmeret = 1000;
-    nepvaltozat(szim);
-    szim[1].all = true;
-    szim[1].virus = (Virus){25, 0.3, 8};
-    szim[1].nepmeret = 1000;
-    nepvaltozat(&szim[1]);
-    szim[2].all = true;
-    szim[2].virus = (Virus){15, 0.3, 8};
-    szim[2].nepmeret = 1000;
-    nepvaltozat(&szim[2]);*/
-
     int s = 0;
     SDL_TimerID base = SDL_AddTimer(fps, idozit, NULL);
 
@@ -74,7 +60,7 @@ int main(int argc, char *argv[]){
                 ujraindit(szim);
                 uj(szim, &stop, &melyik);
                 bevitel_valaszt();
-                inditas(szim, melyik, bev, &stop);
+                inditas(szim, melyik, &bev, &stop);
                 break;
             case SDL_KEYUP:
                 if (beallit && bevitel != Semmi && billentyutochar(ev.key.keysym.sym) >= '0'

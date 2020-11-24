@@ -17,7 +17,7 @@ void exit_gomb(SDL_Renderer* renderer, bool hower){
     }
 }
 
-static void ertek_stringbe_masol(char* ide, char* const ellenorzo){
+static void ertek_stringbe_masol(char* ide, char const ellenorzo[]){
     if (atoi(ellenorzo) != 0)
         sprintf(ide, "%d", atoi(ellenorzo));
     else
