@@ -17,12 +17,41 @@ void exit_gomb(SDL_Renderer* renderer, bool hower){
     }
 }
 
+void szim_info(SDL_Renderer* renderer, Szim* const szim, int i){
+    SDL_Color szurke = {20, 20, 20, 255};
+    int x1 = W / 4 + W * TART_SZEL + 10;
+    int x2 = x1 + 150;
+    int y1 = H * SAV_SZEL + 50 + i * (W * TART_SZEL + 50) + 20;
+    int y2 = y1 + W * TART_SZEL - 40;
+    boxRGBA(renderer, x1, y1, x2, y2, 220, 220, 220, 100);
+    Bevstring info;
+    info.nep[0] = '\0';
+    info.sug[0] = '\0';
+    info.szaz[0] = '\0';
+    info.sug[0] = '\0';
+    sprintf(info.nep, "%d", szim[i].nepmeret);
+    sprintf(info.sug, "%d", szim[i].virus.r);
+    sprintf(info.szaz, "%d", (int)(szim[i].virus.p * 100));
+    sprintf(info.ido, "%d", szim[i].virus.recover);
+    kiir(renderer, betutipus[1].tipus, szurke, "népesség:", x1 + 5, y1 + 8);
+    kiir(renderer, betutipus[1].tipus, szurke, info.nep, x1 + 105, y1 + 9);
+    kiir(renderer, betutipus[1].tipus, szurke, "terj. sugár:", x1 + 5, y1 + 40);
+    kiir(renderer, betutipus[1].tipus, szurke, info.sug, x1 + 105, y1 + 41);
+    kiir(renderer, betutipus[1].tipus, szurke, "fert. esély:", x1 + 5, y1 + 72);
+    kiir(renderer, betutipus[1].tipus, szurke, info.szaz, x1 + 105, y1 + 73);
+    kiir(renderer, betutipus[1].tipus, szurke, "%", x1 + 135, y1 + 73);
+    kiir(renderer, betutipus[1].tipus, szurke, "gyogy. idö:", x1 + 5, y1 + 104);
+    kiir(renderer, betutipus[1].tipus, szurke, info.ido, x1 + 105, y1 + 105);
+
+}
+
 static void ertek_stringbe_masol(char* ide, char const ellenorzo[]){
     if (atoi(ellenorzo) != 0)
         sprintf(ide, "%d", atoi(ellenorzo));
     else
         sprintf(ide, "-");
 }
+
 
 void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const melyik){
     SDL_Color vilagos = {200, 200, 200, 255};

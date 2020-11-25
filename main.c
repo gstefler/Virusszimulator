@@ -35,6 +35,11 @@ int main(int argc, char *argv[]){
     init_SDL();
     init_TTF(betutipus, bet_db);
 
+    szim->all = true;
+    szim->nepmeret = 1000;
+    szim->virus = (Virus){20, 1.0, 8};
+    nepvaltozat(szim);
+
     SDL_Window* window;
     SDL_Renderer* renderer;
     create(&window, &renderer);
