@@ -3,14 +3,11 @@
 extern int W, H;
 extern Betutipus *betutipus;
 
-enum Melyik{Fert, Gyogy, X_koo};
-
 SDL_Color vilagos = {220, 220, 220};
 
-static Sint16* belerak(Grafikon* const graf, enum Melyik melyik, double const nepmeret, double const novelo, int const x, int const y, int const y1){
+Sint16* belerak(Grafikon* const graf, enum Melyik melyik, double const arany, double const nepmeret, double const novelo, int const x, int const y, int const y1){
     int meret = graf->meret;
-    double arany = W * TART_SZEL / (double)nepmeret;
-    Sint16* tmp = (Sint16*)malloc(sizeof(Sint16) * (meret + 2));
+    Sint16* tmp = (Sint16*)malloc(sizeof(Sint16) * (graf->meret + 2));
     GrafLista* fedex;
     int szamlalo = 1;
 
@@ -47,10 +44,10 @@ static Sint16* belerak(Grafikon* const graf, enum Melyik melyik, double const ne
 
 static void gorbe_rajzol(SDL_Renderer* renderer, Grafikon* const graf, int const nepmeret, int const x, int const y, int const y1){
     double novelo = (double)(W * TART_SZEL * 2) / graf->meret;
-
-    Sint16* f_y = belerak(graf, Fert, nepmeret, novelo, x, y, y1);
-    Sint16* gy_y = belerak(graf, Gyogy, nepmeret, novelo, x, y, y1);
-    Sint16* f_gy_x = belerak(graf, X_koo, nepmeret, novelo, x, y, y1);
+    double arany = W * TART_SZEL / (double)nepmeret;
+    Sint16* f_y = belerak(graf, Fert, arany, nepmeret, novelo, x, y, y1);
+    Sint16* gy_y = belerak(graf, Gyogy, arany, nepmeret, novelo, x, y, y1);
+    Sint16* f_gy_x = belerak(graf, X_koo, arany, nepmeret, novelo, x, y, y1);
 
     filledPolygonRGBA(renderer, f_gy_x, f_y, graf->meret + 2, 255, 50, 50, 255);
     filledPolygonRGBA(renderer, f_gy_x, gy_y, graf->meret + 2, 50, 255, 50, 255);

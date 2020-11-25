@@ -61,6 +61,7 @@ int main(int argc, char *argv[]){
                 uj(szim, &stop, &melyik);
                 bevitel_valaszt();
                 inditas(szim, melyik, &bev, &stop);
+                svg_export_katt(szim);
                 break;
             case SDL_KEYUP:
                 if (beallit && bevitel != Semmi && billentyutochar(ev.key.keysym.sym) >= '0'

@@ -94,3 +94,14 @@ void inditas(Szim* szim, int melyik, Bevstring* bev, bool* stop){
         }
     }
 }
+
+void svg_export_katt(Szim* const szim){
+    for (int i = 0; i < SZIMSZAM; ++i) {
+        int x = realtoint((W / 4 - W * TART_SZEL) / 2.0) - 50;
+        int y = H * SAV_SZEL + 50 + i * (W * TART_SZEL + 50) + 150;
+        if (!beallit && szim[i].all && szim[i].graf->utso->fert == 0 && katt(EX, EY, x, x + 100, y, y + 30)){
+            SVG_export(szim, i);
+        }
+
+    }
+}

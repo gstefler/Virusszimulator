@@ -12,7 +12,7 @@ add_executable(NHF
         SDL_FV/sdl_init.h
         debugmalloc.h
         def.h
-        main.c KEZEL/adat_kezel.c KEZEL/adat_kezel.h KEZEL/szimluacio_kezel.c KEZEL/szimluacio_kezel.h RAJZOL/szim_rajzol.c RAJZOL/szim_rajzol.h RAJZOL/graf_rajzol.c RAJZOL/graf_rajzol.h globalis_fvek.c globalis_fvek.h KEZEL/kattintas_kezel.c KEZEL/kattintas_kezel.h RAJZOL/dinamikus_elemek_rajzol.c RAJZOL/dinamikus_elemek_rajzol.h RAJZOL/osszes_rajzol.c RAJZOL/osszes_rajzol.h KEZEL/beallitas_kezel.c KEZEL/beallitas_kezel.h FILE/export_SVG.c FILE/export_SVG.h)
+        main.c KEZEL/adat_kezel.c KEZEL/adat_kezel.h KEZEL/szimluacio_kezel.c KEZEL/szimluacio_kezel.h RAJZOL/szim_rajzol.c RAJZOL/szim_rajzol.h RAJZOL/graf_rajzol.c RAJZOL/graf_rajzol.h globalis_fvek.c globalis_fvek.h KEZEL/kattintas_kezel.c KEZEL/kattintas_kezel.h RAJZOL/dinamikus_elemek_rajzol.c RAJZOL/dinamikus_elemek_rajzol.h RAJZOL/osszes_rajzol.c RAJZOL/osszes_rajzol.h KEZEL/beallitas_kezel.c KEZEL/beallitas_kezel.h FILE/SVG.c FILE/SVG.h)
 
 target_link_libraries(${PROJECT_NAME} m)
 
