@@ -154,6 +154,22 @@ void torol_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     }
 }
 
+void export_svg(SDL_Renderer* renderer, Szim* const szim, int i){
+    SDL_Color sotet = {30, 30, 30, 255};
+    SDL_Color sotet_hal = {30, 30, 30, 150};
+    int x = realtoint((W / 4 - W * TART_SZEL) / 2.0) - 50;
+    int y = H * SAV_SZEL + 50 + i * (W * TART_SZEL + 50) + 150;
+    bool hower = katt(EX, EY, x,x + 100, y, y + 30);
+    if(!beallit && hower){
+        boxRGBA(renderer, x, y, x + 100, y + 30, 200, 200, 200, 150);
+        kiir(renderer, betutipus[3].tipus, sotet_hal, "EXPORT SVG", x + 10, y + 9);
+    }
+    else{
+        boxRGBA(renderer, x, y, x + 100, y + 30, 200, 200, 200, 255);
+        kiir(renderer, betutipus[3].tipus, sotet, "EXPORT SVG", x + 10, y + 9);
+    }
+}
+
 void hozzaad_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     if (!szim[i].all){
         SDL_Color sotet = {30, 30, 30, 255};

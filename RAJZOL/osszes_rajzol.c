@@ -39,6 +39,8 @@ void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstrin
             valt_gomb(renderer, szim, i);
             ujraindit_gomb(renderer, szim, i);
             torol_gomb(renderer, szim, i);
+            if (szim[i].graf->utso->fert == 0)
+                export_svg(renderer, szim, i);
         }
         keret(renderer, szim, i);
         hozzaad_gomb(renderer, szim, i);
