@@ -4,7 +4,7 @@
 #include "../def.h"
 #include "../globalis_fvek.h"
 #include "adat_kezel.h"
-#include "FILE/SVG.h"
+#include "../FILE/SVG.h"
 
 void kilepes(bool* quit);
 void valt(Szim* const szim, bool* stop, int* melyiket);

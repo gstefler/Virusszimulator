@@ -27,7 +27,7 @@ void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstrin
     //Felső sáv kirajzolása
     boxRGBA(renderer, 0, 0, W, H * SAV_SZEL, 200, 200, 200, 255);
     //felső sáv szöveg kiírása
-    kiir(renderer, betutipus[0].tipus, sotet, "Vírus szimulátor", W/2 - 80, 5);
+    kiir(renderer, betutipus[0].tipus, sotet, "Vírus szimulátor", W/2 - 80, 8);
     //X gomb
     exit_gomb(renderer, katt(EX, EY, W - 25, W - 5, 0, H * SAV_SZEL));
     //Szimulációk állapotától függő dinamikus kirajzolás

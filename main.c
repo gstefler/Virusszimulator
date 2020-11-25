@@ -16,6 +16,7 @@ int main(int argc, char *argv[]){
     int fps = 25;
     srand(time(0));
     Szim* szim;
+    int export_szamlalo = 0;
 
     int bet_db = 4;
     betutipus = (Betutipus*)malloc(bet_db * sizeof(Betutipus));

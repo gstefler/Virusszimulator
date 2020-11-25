@@ -9,11 +9,11 @@ extern Bevitel bevitel;
 void exit_gomb(SDL_Renderer* renderer, bool hower){
     if (hower) {
         SDL_Color piros_hal = {160, 0, 0, 50};
-        kiir(renderer, betutipus[0].tipus, piros_hal, "X", W - 25, 4);
+        kiir(renderer, betutipus[0].tipus, piros_hal, "X", W - 25, 8);
     }
     else {
         SDL_Color piros = {160, 0, 0, 255};
-        kiir(renderer, betutipus[0].tipus, piros, "X", W - 25, 4);
+        kiir(renderer, betutipus[0].tipus, piros, "X", W - 25, 8);
     }
 }
 
