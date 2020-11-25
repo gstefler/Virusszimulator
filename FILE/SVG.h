@@ -4,6 +4,6 @@
 #include "../def.h"
 #include "RAJZOL/graf_rajzol.h"
 
-void SVG_export(Szim* const szim, int melyik);
+void SVG_export(Szim* const szim, int melyik, int* szamlalo);
 
 #endif

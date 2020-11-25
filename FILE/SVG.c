@@ -69,15 +69,14 @@ static void pontok_stringbe(char** fert_string, char** gyogy_string, Grafikon* g
 /* Elvégzi az SVG file exportálását
  * megkapja a szimulációk tömbjét és hogy melyiket exportálja ki
  * */
-void SVG_export(Szim* const szim, int melyik){
+void SVG_export(Szim* const szim, int melyik, int* szamlalo){
     FILE* exp_svg;
     char* fertpontok = (char*)malloc(0);
     char* gyogypontok = (char*)malloc(0);
     pontok_stringbe(&fertpontok, &gyogypontok, szim[melyik].graf, szim[melyik].nepmeret);
-
     //egyedi filenev, hogy egy futás alatt többet is ki tudjunk exportálni
-    char filenev[12 + 1];
-    sprintf(filenev, "szim_%d.svg", melyik);
+    char filenev[20 + 1];
+    sprintf(filenev, "szim_%d_x%d.svg", melyik, (*szamlalo)++);
     exp_svg = fopen(filenev, "w");
     if (exp_svg != NULL){
         printf("Sikeres filemegnyitás!\n");
@@ -100,7 +99,7 @@ void SVG_export(Szim* const szim, int melyik){
     fprintf(exp_svg, "<polygon points=\"%s\" style=\"fill:green;\" />\n", gyogypontok);
     fprintf(exp_svg, "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:rgb(220,220,220);stroke-width:2\" />", x1, y1, x1, y1 + SVG_GRAF_H);
     fprintf(exp_svg, "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:rgb(220,220,220);stroke-width:2\" />", x1, y1 + SVG_GRAF_H, x1 + SVG_GRAF_W, y1 + SVG_GRAF_H);
-    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" font-size=\"16\">fertőzöttek / gyógyultak</text>\n", x1 + 10, y1 + 10);
+    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" font-size=\"16\">fertőzöttek / gyógyultak | népesség: %d</text>\n", x1 + 10, y1 + 10, szim[melyik].nepmeret);
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"end\" font-size=\"16\">idő</text>\n", x1 + SVG_GRAF_W, y1 + SVG_GRAF_H + 20);
     fprintf(exp_svg, "</svg>");
 
