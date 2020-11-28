@@ -78,7 +78,7 @@ void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const mely
     boxRGBA(renderer, W / 2 + 130, y1 + 345, x2 - 90, y1 + 380, 40, 40, 40, 220);
     boxRGBA(renderer, W / 2 + 130, y1 + 420, x2 - 90, y1 + 455, 40, 40, 40, 220);
 
-    //Beviteli mezők "dimenziójának kiírása"
+    //Beviteli mezők "dimenziójának" kiírása
     kiir(renderer, betutipus[0].tipus, vilagos, "egyed", W / 2 + 240, y1 + 202);
     kiir(renderer, betutipus[0].tipus, vilagos, "egység", W / 2 + 240, y1 + 277);
     kiir(renderer, betutipus[0].tipus, vilagos, "%", W / 2 + 240, y1 + 352);
@@ -91,10 +91,10 @@ void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const mely
     kiir(renderer, betutipus[0].tipus, vilagos, szimul, W / 2 - 70, y1 + 60);
 
     //Beviteli infók kiírása
-    kiir(renderer, betutipus[0].tipus, vilagos, "Népesség mérete:", x1 + 20, y1 + 200);
-    kiir(renderer, betutipus[0].tipus, vilagos, "Vírus terjedési sugara:", x1 + 20, y1 + 275);
-    kiir(renderer, betutipus[0].tipus, vilagos, "Fertözési esélye(%):", x1 + 20, y1 + 350);
-    kiir(renderer, betutipus[0].tipus, vilagos, "Gyógyulási idö:", x1 + 20, y1 + 420);
+    kiir(renderer, betutipus[0].tipus, vilagos, "Népesség mérete (20 - 2000):", x1 + 20, y1 + 200);
+    kiir(renderer, betutipus[0].tipus, vilagos, "Vírus terjedési sugara: (4 - 50)", x1 + 20, y1 + 275);
+    kiir(renderer, betutipus[0].tipus, vilagos, "Fertözés esélye (1 - 100%):", x1 + 20, y1 + 350);
+    kiir(renderer, betutipus[0].tipus, vilagos, "Gyógyulási idö (1 - 100):", x1 + 20, y1 + 420);
 
     //Aktív beviteli mező kirajzolása
     switch (bevitel) {
@@ -140,7 +140,7 @@ void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const mely
     kiir(renderer, betutipus[0].tipus, vilagos, szaz, W / 2 + 140, y1 + 352);
     kiir(renderer, betutipus[0].tipus, vilagos, ido, W / 2 + 140, y1 + 427);
 
-    //indítás gomb
+    //mégse
     if (katt(EX, EY, x2 - 20 - 100, x2 - 20, y2 - 60, y2 - 20)){
         boxRGBA(renderer, x2 - 20, y2 - 60, x2 - 20 - 100, y2 - 20, 40, 40, 40, 150);
         kiir(renderer, betutipus[1].tipus, vilagos_hal, "MÉGSE", x2 - 100, y2 - 50);
@@ -149,7 +149,7 @@ void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const mely
         kiir(renderer, betutipus[1].tipus, vilagos, "MÉGSE", x2 - 100, y2 - 50);
     }
 
-    //mégse gomb
+    //indítás
     if (katt(EX, EY, x1 + 20, x1 + 20 + 200, y2 - 60, y2 - 20)){
         boxRGBA(renderer, x1 + 20, y2 - 60, x1 + 20 + 200, y2 - 20, 40, 40, 40, 150);
         kiir(renderer, betutipus[1].tipus, vilagos_hal, "MENTÉS ÉS INDÍTÁS", x1 + 35, y2 - 50);

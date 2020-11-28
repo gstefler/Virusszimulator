@@ -35,10 +35,11 @@ int main(int argc, char *argv[]){
     init_SDL();
     init_TTF(betutipus, bet_db);
 
+    /*
     szim->all = true;
     szim->nepmeret = 1000;
     szim->virus = (Virus){20, 0.3, 8};
-    nepvaltozat(szim);
+    nepvaltozat(szim);*/
 
     SDL_Window* window;
     SDL_Renderer* renderer;
@@ -68,6 +69,7 @@ int main(int argc, char *argv[]){
                 bevitel_valaszt();
                 inditas(szim, melyik, &bev, &stop, &hiba);
                 svg_export_katt(szim, &export_szamlalo);
+                megse();
                 break;
             case SDL_KEYUP:
                 if (beallit && bevitel != Semmi && billentyutochar(ev.key.keysym.sym) >= '0'

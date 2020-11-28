@@ -53,6 +53,8 @@ static void szam_bevisz(char* ebbe, Uint32 const szam_be, int const kenyszer){
         tesztelo[0] = '\0';
         //tesztelőbe belemásoljuk a beviteli stringet
         str_masol(tesztelo, ebbe);
+        if (strcmp(tesztelo, "0") == 0)
+            tesztelo[0] = '\0';
         //hozzáfűzűkk a tesztelőhöz a bevitt számot
         egy_karakter_hozzafuz(tesztelo, billentyutochar(szam_be));
         //ha teljesöl a kényszer akkor beleírjuk a beviteli stringbe

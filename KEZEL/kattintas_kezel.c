@@ -72,6 +72,17 @@ void bevitel_valaszt(void){
     }
 }
 
+void megse(void){
+    int x2 = W / 6 * 4;
+    int y1 = 200;
+    int y2 = H - y1;
+    if (beallit){
+        if (katt(EX, EY, x2 - 20 - 100, x2 - 20, y2 - 60, y2 - 20)){
+            beallit = false;
+        }
+    }
+}
+
 static Error hiba_keres(Bevstring const bevstring){
     int nep_min = 20;
     int sug_min = R + 1;
