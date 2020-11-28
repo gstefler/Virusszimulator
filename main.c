@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
                 }
                 break;
             case SDL_USEREVENT:
-                rajzolas(renderer, szim, bev, melyik, hiba);
+                rajzolas(renderer, szim, bev, melyik, hiba, stop);
                 if (!stop){
                     if (s++ < 1000 / fps) {
                         szimulal(szim, false);

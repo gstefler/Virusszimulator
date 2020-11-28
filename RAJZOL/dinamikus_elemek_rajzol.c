@@ -21,6 +21,7 @@ void exit_gomb(SDL_Renderer* renderer, bool hower){
 
 void szim_info(SDL_Renderer* renderer, Szim* const szim, int i){
     SDL_Color szurke = {20, 20, 20, 255};
+    SDL_Color piros = {80, 0, 60};
     int x1 = W / 2 + W * TART_SZEL * 2 + 150;
     int x2 = x1 + 200;
     int y1 = H * SAV_SZEL + 50 + i * (W * TART_SZEL + 50) + 20;
@@ -46,6 +47,9 @@ void szim_info(SDL_Renderer* renderer, Szim* const szim, int i){
     kiir(renderer, betutipus[1].tipus, szurke, info.ido, x1 + 110, y1 + 105);
     kiir(renderer, betutipus[1].tipus, szurke, r0, x1 + 5, y1 + 137);
     kiir(renderer, betutipus[1].tipus, szurke, r0_max, x1 + 5, y1 + 169);
+    if (szim[i].graf->utso->fert == 0){
+        kiir(renderer, betutipus[0].tipus, piros, "KIHALT!", x1 + 60, y1 + 220);
+    }
 }
 
 static void ertek_stringbe_masol(char* ide, char const ellenorzo[]){

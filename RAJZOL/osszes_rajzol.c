@@ -16,7 +16,7 @@ static void draw_gradient(SDL_Renderer *renderer){
 }
 SDL_Color sotet = {22, 22, 22};
 
-void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstring, int const melyik, Error const hiba){
+void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstring, int const melyik, Error const hiba, bool stop){
     //Rajzolás előtti felkészülés
     SDL_SetRenderDrawColor(renderer,22,22,22,255);
     SDL_RenderClear(renderer);
@@ -28,6 +28,9 @@ void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstrin
     boxRGBA(renderer, 0, 0, W, H * SAV_SZEL, 200, 200, 200, 255);
     //felső sáv szöveg kiírása
     kiir(renderer, betutipus[0].tipus, sotet, "Vírus szimulátor", W/2 - 80, 8);
+    //
+    if (stop)
+        kiir(renderer, betutipus[1].tipus, sotet, "SZÜNETEL", 10, 8);
     //X gomb
     exit_gomb(renderer, katt(EX, EY, W - 25, W - 5, 0, H * SAV_SZEL));
     //Szimulációk állapotától függő dinamikus kirajzolás

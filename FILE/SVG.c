@@ -110,7 +110,7 @@ void SVG_export(Szim* const szim, int melyik, int* szamlalo){
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"20\">R</text>\n", x1 + 400, y1 + SVG_GRAF_H + 100);
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"15\">max</text>\n", x1 + 415, y1 + SVG_GRAF_H + 103);
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"20\">:</text>\n", x1 + 445, y1 + SVG_GRAF_H + 98);
-    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"20\">%.2f</text>\n", x1 + 445, y1 + SVG_GRAF_H + 98, szim[melyik].rmax);
+    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"20\">%.2f</text>\n", x1 + 455, y1 + SVG_GRAF_H + 100, szim[melyik].rmax);
     fprintf(exp_svg, "</svg>");
 
     //szoki szabadítás
