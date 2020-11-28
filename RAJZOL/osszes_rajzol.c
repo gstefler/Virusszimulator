@@ -16,7 +16,7 @@ static void draw_gradient(SDL_Renderer *renderer){
 }
 SDL_Color sotet = {22, 22, 22};
 
-void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstring, int melyik){
+void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstring, int const melyik, Error const hiba){
     //Rajzolás előtti felkészülés
     SDL_SetRenderDrawColor(renderer,22,22,22,255);
     SDL_RenderClear(renderer);
@@ -47,7 +47,7 @@ void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstrin
         hozzaad_gomb(renderer, szim, i);
     }
     if (beallit) {
-        beallitas(renderer, bevstring, melyik);
+        beallitas(renderer, bevstring, melyik, hiba);
     }
     SDL_RenderPresent(renderer);
 }

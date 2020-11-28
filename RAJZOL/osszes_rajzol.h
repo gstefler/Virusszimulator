@@ -5,6 +5,6 @@
 #include "szim_rajzol.h"
 #include "graf_rajzol.h"
 
-void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstring, int melyik);
+void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstring, int const melyik, Error const hiba);
 
 #endif

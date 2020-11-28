@@ -12,7 +12,7 @@ void torol(Szim* szim);
 void ujraindit(Szim* szim);
 void uj(Szim* szim, bool* stop, int* melyik);
 void bevitel_valaszt(void);
-void inditas(Szim* szim, int melyik, Bevstring* bevstring, bool* stop);
+void inditas(Szim* szim, int melyik, Bevstring* bev, bool* stop, Error* hiba);
 void svg_export_katt(Szim* const szim, int* szamlalo);
 
 #endif

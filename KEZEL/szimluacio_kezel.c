@@ -32,7 +32,7 @@ static int gyogyultak(Szim* const szim){
 
 /*
 Ez a függvény bővíti a láncolt listát az adott pillanat beli adatokkal
-amiket egyébként a függvény paraméterként kap meg
+amiket a függvény paraméterként kap meg
 */
 void bovit(Szim* szim, int const fert, int const gyogy){
     if (szim->graf->utso != NULL){
@@ -71,42 +71,34 @@ static Allapot fertoz(Virus* const v){
     return Fogekony;
 }
 
-static void r_szamol(Szim* szim){
-    double uj_r0 = 0;
-    if (szim->elozo != 0)
-         uj_r0 = (double)szim->graf->utso->fert / (double)szim->elozo;
-
-    if (szim->rmax < uj_r0)
-        szim->rmax = uj_r0;
-    if (szim->graf->utso->fert != 0){
-        szim->R0 = uj_r0;
-    }
-}
-
 /*
 Ez a függvény adott időközönkén hívódik meg és akkor megnézi, hogy az egymáshoz
 közel lévő emberek a virus paramétere szerint fertőzőttek lesznek-e,
 ha meggyógyulnak azt is kezeli
 */
-void tesztel(Szim* szimulacio){
-    for (int i = 0; i < SZIMSZAM; ++i) {
-        if (szimulacio[i].all){
-            szimulacio[i].elozo = fertozottek(szimulacio);
-            Egyed* nep = szimulacio[i].nep;
-            for (int j = 0; j < szimulacio[i].nepmeret; ++j) {
-                if (nep[j].allapot == Fertozott){
-                    if (nep[j].miota++ == szimulacio[i].virus.recover){
-                        nep[j].allapot = Gyogyult;
-                    }
-                    else{
-                        for (int k = j + 1; k <szimulacio[i].nepmeret; ++k) {
-                            if (kozel(nep[j].hely.x, nep[j].hely.y, nep[k].hely.x, nep[k].hely.y, szimulacio[i].virus.r, R)
-                                && nep[k].allapot == Fogekony){
-                                nep[k].allapot = fertoz(&szimulacio[i].virus);
-                                if (nep[k].allapot != Fertozott)
-                                    nep[j].mennyit++;
-                            }
-                        }
+static void tesztel(Szim* szimulacio, int i){
+    //rögzíti hogy az előző időpillanatban mennyi volt a fertőzött
+    szimulacio[i].elozo = fertozottek(szimulacio);
+    Egyed* nep = szimulacio[i].nep;
+    //végig megyünk az összes egyeden
+    for (int j = 0; j < szimulacio[i].nepmeret; ++j) {
+        //ha fertőzött
+        if (nep[j].allapot == Fertozott){
+            //megnézzük hogy lejárt-e a fertőzésvés növeljük
+            if (++nep[j].miota == szimulacio[i].virus.recover){
+                //ha lejárt megyógyultak
+                nep[j].allapot = Gyogyult;
+            }
+            else{
+                //végig megyünk a maradék egyedeken
+                for (int k = j + 1; k <szimulacio[i].nepmeret; ++k) {
+                    //fogékony és közel van
+                    if (nep[k].allapot == Fogekony &&
+                        kozel(nep[j].hely.x, nep[j].hely.y, nep[k].hely.x, nep[k].hely.y, szimulacio[i].virus.r, R)){
+
+                        nep[k].allapot = fertoz(&szimulacio[i].virus);
+                        if (nep[k].allapot == Fertozott)
+                            nep[j].mennyit++;
                     }
                 }
             }
@@ -145,6 +137,18 @@ static void seb_szam(Hely *hely){
         *y += *yv;
 }
 
+static void r_szamol(Szim* szim, int i){
+    double uj_r0 = 0;
+    if (szim[i].elozo != 0)
+        uj_r0 = (double)szim[i].graf->utso->fert / (double)szim[i].elozo;
+
+    if (szim[i].rmax < uj_r0)
+        szim[i].rmax = uj_r0;
+    if (szim[i].graf->utso->fert != 0){
+        szim[i].R0 = uj_r0;
+    }
+}
+
 /*
 Ítt gyűlik össze az összes szimulációhoz szükséges függvény
 és fut le a megfelelő sorrendben
@@ -153,16 +157,13 @@ void szimulal(Szim* szimulacio, bool mindent){
     for (int i = 0; i < SZIMSZAM; ++i) {
         if (szimulacio[i].all && szimulacio[i].graf->utso->fert != 0){
             if (mindent) {
+                tesztel(szimulacio, i);
                 bovit(&szimulacio[i], fertozottek(&szimulacio[i]), gyogyultak(&szimulacio[i]));
-                r_szamol(&szimulacio[i]);
+                r_szamol(szimulacio, i);
             }
             for (int j = 0; j < szimulacio[i].nepmeret; ++j){
                 seb_szam(&szimulacio[i].nep[j].hely);
             }
         }
     }
-}
-
-void adatok_valtoztat(Szim* szim, char* nep, char* radius, char* szazalek){
-
 }

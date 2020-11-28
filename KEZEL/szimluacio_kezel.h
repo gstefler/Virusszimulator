@@ -5,6 +5,5 @@
 
 void bovit(Szim* szim, int const fert, int const gyogy);
 void szimulal(Szim* szimulacio, bool mindent);
-void tesztel(Szim* szimulacio);
 
 #endif

@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
 
     szim->all = true;
     szim->nepmeret = 1000;
-    szim->virus = (Virus){20, 1.0, 8};
+    szim->virus = (Virus){20, 0.3, 8};
     nepvaltozat(szim);
 
     SDL_Window* window;
@@ -47,11 +47,11 @@ int main(int argc, char *argv[]){
     int s = 0;
     SDL_TimerID base = SDL_AddTimer(fps, idozit, NULL);
 
-
     //Eseményvezérelt LOOP
     bool stop = false;
     int melyik;
     bool quit = false;
+    Error hiba;
     while (!quit){
         SDL_Event ev;
         SDL_WaitEvent(&ev);
@@ -66,14 +66,14 @@ int main(int argc, char *argv[]){
                 ujraindit(szim);
                 uj(szim, &stop, &melyik);
                 bevitel_valaszt();
-                inditas(szim, melyik, &bev, &stop);
+                inditas(szim, melyik, &bev, &stop, &hiba);
                 svg_export_katt(szim, &export_szamlalo);
                 break;
             case SDL_KEYUP:
                 if (beallit && bevitel != Semmi && billentyutochar(ev.key.keysym.sym) >= '0'
                 && billentyutochar(ev.key.keysym.sym) <= '9' || ev.key.keysym.sym == SDLK_RETURN
                 || ev.key.keysym.sym == SDLK_BACKSPACE || ev.key.keysym.sym == SDLK_KP_ENTER){
-                    bevisz(szim, &bev, ev.key.keysym.sym);
+                    bevisz(&bev, ev.key.keysym.sym);
                 }
                 if (ev.key.keysym.sym == SDLK_ESCAPE){
                     if (beallit)
@@ -89,13 +89,12 @@ int main(int argc, char *argv[]){
                 }
                 break;
             case SDL_USEREVENT:
-                rajzolas(renderer, szim, bev, melyik);
+                rajzolas(renderer, szim, bev, melyik, hiba);
                 if (!stop){
                     if (s++ < 1000 / fps) {
                         szimulal(szim, false);
                     }
                     else{
-                        tesztel(szim);
                         szimulal(szim, true);
                         s = 0;
                     }

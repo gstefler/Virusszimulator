@@ -65,7 +65,7 @@ static void szam_bevisz(char* ebbe, Uint32 const szam_be, int const kenyszer){
     }
 }
 
-void bevisz(Szim* szim, Bevstring* bevstring, Uint32 szam_be){
+void bevisz(Bevstring* bevstring, Uint32 szam_be){
     //kényszerek az értékekre
     int nep_max = 2000;
     int sug_max = 50;

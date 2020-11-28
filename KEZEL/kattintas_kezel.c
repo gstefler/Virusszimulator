@@ -70,15 +70,33 @@ void bevitel_valaszt(void){
     }
 }
 
-static bool nincs_nulla(Bevstring* const bevstring){
-    return (atoi(bevstring->nep) != 0 && atoi(bevstring->sug) != 0 && atoi(bevstring->szaz) != 0);
+static Error hiba_keres(Bevstring const bevstring){
+    int nep_min = 20;
+    int sug_min = R + 1;
+    int szaz_min = 1;
+    int ido_min = 1;
+    int hibak_szama = 0;
+
+    Error hiba;
+
+    if (bevstring.nep[0] == '\0' || atoi(bevstring.nep) < nep_min)
+        hiba.hibak[hibak_szama++] = Nepesseg;
+    if (bevstring.sug[0] == '\0' || atoi(bevstring.sug) < sug_min)
+        hiba.hibak[hibak_szama++] = Sugar;
+    if (bevstring.szaz[0] == '\0' || atoi(bevstring.szaz) < szaz_min)
+        hiba.hibak[hibak_szama++] = Szazalek;
+    if (bevstring.ido[0] == '\0' || atoi(bevstring.ido) < ido_min)
+        hiba.hibak[hibak_szama++] = Ido;
+    hiba.hibak_szama = hibak_szama;
+    return hiba;
 }
 
-void inditas(Szim* szim, int melyik, Bevstring* bev, bool* stop){
+ void inditas(Szim* szim, int melyik, Bevstring* bev, bool* stop, Error* hiba){
     if (beallit){
         int x = W / 6 * 2;
         int y = H - 200;
-        if (katt(EX, EY, x + 20, x + 20 + 200, y - 60, y - 20) && nincs_nulla(bev)){
+        *hiba = hiba_keres(*bev);
+        if (katt(EX, EY, x + 20, x + 20 + 200, y - 60, y - 20) && !hiba->hibak_szama){
             szim[melyik].all = true;
             szim[melyik].nepmeret = atoi(bev->nep);
             szim[melyik].virus.r = atoi(bev->sug);
@@ -92,6 +110,9 @@ void inditas(Szim* szim, int melyik, Bevstring* bev, bool* stop){
             bev->szaz[0] = '\0';
             bev->ido[0] = '\0';
         }
+        else if (katt(EX, EY, x + 20, x + 20 + 200, y - 60, y - 20) && hiba->hibak_szama)
+            bevitel = Hiba;
+
     }
 }
 
@@ -102,6 +123,5 @@ void svg_export_katt(Szim* const szim, int* szamlalo){
         if (!beallit && szim[i].all && szim[i].graf->utso->fert == 0 && katt(EX, EY, x, x + 100, y, y + 30)){
             SVG_export(szim, i, szamlalo);
         }
-
     }
 }

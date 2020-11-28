@@ -6,6 +6,8 @@ extern bool beallit;
 extern Betutipus* betutipus;
 extern Bevitel bevitel;
 
+/* Jobb felül a kis X gomb
+ * */
 void exit_gomb(SDL_Renderer* renderer, bool hower){
     if (hower) {
         SDL_Color piros_hal = {160, 0, 0, 50};
@@ -19,30 +21,31 @@ void exit_gomb(SDL_Renderer* renderer, bool hower){
 
 void szim_info(SDL_Renderer* renderer, Szim* const szim, int i){
     SDL_Color szurke = {20, 20, 20, 255};
-    int x1 = W / 4 + W * TART_SZEL + 10;
-    int x2 = x1 + 150;
+    int x1 = W / 2 + W * TART_SZEL * 2 + 150;
+    int x2 = x1 + 200;
     int y1 = H * SAV_SZEL + 50 + i * (W * TART_SZEL + 50) + 20;
     int y2 = y1 + W * TART_SZEL - 40;
     boxRGBA(renderer, x1, y1, x2, y2, 220, 220, 220, 100);
     Bevstring info;
-    info.nep[0] = '\0';
-    info.sug[0] = '\0';
-    info.szaz[0] = '\0';
-    info.sug[0] = '\0';
+    char r0[15];
+    char r0_max[15];
+    sprintf(r0, "R = %.2f", szim[i].R0);
+    sprintf(r0_max, "R max = %.2f", szim[i].rmax);
     sprintf(info.nep, "%d", szim[i].nepmeret);
     sprintf(info.sug, "%d", szim[i].virus.r);
     sprintf(info.szaz, "%d", (int)(szim[i].virus.p * 100));
     sprintf(info.ido, "%d", szim[i].virus.recover);
-    kiir(renderer, betutipus[1].tipus, szurke, "népesség:", x1 + 5, y1 + 8);
-    kiir(renderer, betutipus[1].tipus, szurke, info.nep, x1 + 105, y1 + 9);
-    kiir(renderer, betutipus[1].tipus, szurke, "terj. sugár:", x1 + 5, y1 + 40);
-    kiir(renderer, betutipus[1].tipus, szurke, info.sug, x1 + 105, y1 + 41);
-    kiir(renderer, betutipus[1].tipus, szurke, "fert. esély:", x1 + 5, y1 + 72);
-    kiir(renderer, betutipus[1].tipus, szurke, info.szaz, x1 + 105, y1 + 73);
+    kiir(renderer, betutipus[1].tipus, szurke, "népesség =", x1 + 5, y1 + 8);
+    kiir(renderer, betutipus[1].tipus, szurke, info.nep, x1 + 110, y1 + 9);
+    kiir(renderer, betutipus[1].tipus, szurke, "terj. sugár =", x1 + 5, y1 + 40);
+    kiir(renderer, betutipus[1].tipus, szurke, info.sug, x1 + 110, y1 + 41);
+    kiir(renderer, betutipus[1].tipus, szurke, "fert. esély =", x1 + 5, y1 + 72);
+    kiir(renderer, betutipus[1].tipus, szurke, info.szaz, x1 + 110, y1 + 73);
     kiir(renderer, betutipus[1].tipus, szurke, "%", x1 + 135, y1 + 73);
-    kiir(renderer, betutipus[1].tipus, szurke, "gyogy. idö:", x1 + 5, y1 + 104);
-    kiir(renderer, betutipus[1].tipus, szurke, info.ido, x1 + 105, y1 + 105);
-
+    kiir(renderer, betutipus[1].tipus, szurke, "gyogy. idö = ", x1 + 5, y1 + 104);
+    kiir(renderer, betutipus[1].tipus, szurke, info.ido, x1 + 110, y1 + 105);
+    kiir(renderer, betutipus[1].tipus, szurke, r0, x1 + 5, y1 + 137);
+    kiir(renderer, betutipus[1].tipus, szurke, r0_max, x1 + 5, y1 + 169);
 }
 
 static void ertek_stringbe_masol(char* ide, char const ellenorzo[]){
@@ -53,7 +56,7 @@ static void ertek_stringbe_masol(char* ide, char const ellenorzo[]){
 }
 
 
-void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const melyik){
+void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const melyik, Error const hiba){
     SDL_Color vilagos = {200, 200, 200, 255};
     SDL_Color vilagos_hal = {200, 200, 200, 150};
     int x1 = W / 6 * 2;
@@ -86,7 +89,7 @@ void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const mely
     //Beviteli infók kiírása
     kiir(renderer, betutipus[0].tipus, vilagos, "Népesség mérete:", x1 + 20, y1 + 200);
     kiir(renderer, betutipus[0].tipus, vilagos, "Vírus terjedési sugara:", x1 + 20, y1 + 275);
-    kiir(renderer, betutipus[0].tipus, vilagos, "Fertözési százalék(%):", x1 + 20, y1 + 350);
+    kiir(renderer, betutipus[0].tipus, vilagos, "Fertözési esélye(%):", x1 + 20, y1 + 350);
     kiir(renderer, betutipus[0].tipus, vilagos, "Gyógyulási idö:", x1 + 20, y1 + 420);
 
     //Aktív beviteli mező kirajzolása
@@ -103,6 +106,23 @@ void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const mely
         case Ido:
             rectangleRGBA(renderer, W / 2 + 130, y1 + 420, x2 - 90, y1 + 455, 220, 220, 220, 220);
             break;
+        case Hiba:
+            for (int i = 0; i < hiba.hibak_szama; ++i) {
+                switch (hiba.hibak[i]) {
+                    case Nepesseg:
+                        rectangleRGBA(renderer, W / 2 + 130, y1 + 195, x2 - 90, y1 + 230, 220, 0, 0, 220);
+                        break;
+                    case Sugar:
+                        rectangleRGBA(renderer, W / 2 + 130, y1 + 270, x2 - 90, y1 + 305, 220, 0, 0, 220);
+                        break;
+                    case Szazalek:
+                        rectangleRGBA(renderer, W / 2 + 130, y1 + 345, x2 - 90, y1 + 380, 220, 0, 0, 220);
+                        break;
+                    case Ido:
+                        rectangleRGBA(renderer, W / 2 + 130, y1 + 420, x2 - 90, y1 + 455, 220, 0, 0, 220);
+                        break;
+                }
+            }
     }
 
     //Bevitt értékek kiírása

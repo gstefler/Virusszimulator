@@ -79,8 +79,6 @@ void nepvaltozat(Szim* szimulacio){
         //printf("%d | vx: %.4f vy: %.4f\n",i , szimulacio->nep[i].hely.vx, szimulacio->nep[i].hely.vy);
         szimulacio->nep[i].miota = 0;
         szimulacio->nep[i].mennyit = 0;
-        szimulacio->nep[i].tavx =  1000.0;
-        szimulacio->nep[i].tavy =  1000.0;
         szimulacio->nep[i].allapot = Fogekony;
     }
     //Végül az első egyedet Fertőzöttre állítja(valhogy el kell hogy induljon :D)
@@ -89,9 +87,9 @@ void nepvaltozat(Szim* szimulacio){
 
 /*
 Grafikonban lévő láncolt lista inicializálása
-Létrehoz egy első elemet amiben minden nulla,
-mert ugye a 0. időpillanatban senki sem fertőzőtt
-és ez list utolsó eleme(jelenleg)
+Létrehoz egy első elemet amiben 1db fertőzött van,
+mert ugye a 0. időpillanatban 1 fertőzött van
+és ez a lista utolsó eleme(jelenleg)
 */
 Grafikon* graf_init(void){
     GrafLista *elso = (GrafLista*)malloc(sizeof(GrafLista));

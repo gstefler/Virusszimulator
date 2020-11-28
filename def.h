@@ -43,8 +43,6 @@ typedef struct Egyed
     Allapot allapot;
     int miota;
     int mennyit;
-    double tavx;
-    double tavy;
 }Egyed;
 
 /*
@@ -89,16 +87,15 @@ typedef struct Szim {
     double R0;
     double rmax;
     int elozo;
-    bool tavol;
     bool all;
 }Szim;
 
 /*
- *Struktúra a betűtípusnak
+ * Struktúra a betűtípusnak
  */
 typedef struct Betutipus{
     TTF_Font* tipus;
-    int meret;
+    int meret; //betű mérete
 }Betutipus;
 
 typedef struct Bevstring{
@@ -108,5 +105,10 @@ typedef struct Bevstring{
 typedef enum Bevitel {
     Semmi, Nepesseg, Sugar, Szazalek, Ido, Hiba
 } Bevitel;
+
+typedef struct Error{
+    Bevitel hibak[4];
+    int hibak_szama;
+}Error;
 
 #endif
