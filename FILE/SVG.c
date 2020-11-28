@@ -103,13 +103,14 @@ void SVG_export(Szim* const szim, int melyik, int* szamlalo){
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" font-size=\"16\">fertőzöttek / gyógyultak | népesség: %d</text>\n", x1 + 10, y1 + 10, szim[melyik].nepmeret);
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"end\" font-size=\"16\">idő</text>\n", x1 + SVG_GRAF_W, y1 + SVG_GRAF_H + 20);
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" text-decoration=\"underline\" font-size=\"20\">Szimuláció paraméterei</text>\n", x1, y1 + SVG_GRAF_H + 40);
-    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"16\">népesség mérete: %d</text>\n", x1 + 5, y1 + SVG_GRAF_H + 70, szim[melyik].nepmeret);
-    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"16\">fertőzés sugara: %d</text>\n", x1 + 5, y1 + SVG_GRAF_H + 95, szim[melyik].virus.r);
-    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"16\">fertőzés esélye: %d</text>\n", x1 + 5, y1 + SVG_GRAF_H + 120, (int)(szim[melyik].virus.p * 100));
-    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"16\">gyógyulás ideje: %d</text>\n", x1 + 5, y1 + SVG_GRAF_H + 145, szim[melyik].virus.recover);
+    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"16\">népesség mérete: %d fő</text>\n", x1 + 5, y1 + SVG_GRAF_H + 70, szim[melyik].nepmeret);
+    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"16\">fertőzés sugara: %d egység</text>\n", x1 + 5, y1 + SVG_GRAF_H + 95, szim[melyik].virus.r);
+    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"16\">fertőzés esélye: %d%%</text>\n", x1 + 5, y1 + SVG_GRAF_H + 120, (int)(szim[melyik].virus.p * 100));
+    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"16\">gyógyulás ideje: %d egység</text>\n", x1 + 5, y1 + SVG_GRAF_H + 145, szim[melyik].virus.recover);
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"20\">R</text>\n", x1 + 400, y1 + SVG_GRAF_H + 100);
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"15\">max</text>\n", x1 + 415, y1 + SVG_GRAF_H + 103);
     fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"20\">:</text>\n", x1 + 445, y1 + SVG_GRAF_H + 98);
+    fprintf(exp_svg, "<text x=\"%d\" y=\"%d\" fill=\"white\" text-anchor=\"start\" font-size=\"20\">%.2f</text>\n", x1 + 445, y1 + SVG_GRAF_H + 98, szim[melyik].rmax);
     fprintf(exp_svg, "</svg>");
 
     //szoki szabadítás
