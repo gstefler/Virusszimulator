@@ -12,3 +12,4 @@ Minden aktív szimuláció mellé kirajzolódik egy grafikon ami a mellete lév�
 ## Programozói rész
 A programot linux alatt a *CLion IDE* segítségével készítettem. Használt könyvtárak: **SDL2**
 Az összes függvény működésének részletes leírása megtalálható a kódban.
+Fontos hogy legyen a betűtípus az executable mellet font.ttf néven, különben nem fog elindulni!
