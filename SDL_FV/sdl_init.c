@@ -44,7 +44,7 @@ void create(SDL_Window **pwindow, SDL_Renderer **prenderer){
         SDL_Log("Nem hozható letre az ablak: %s", SDL_GetError());
         exit(1);
     }
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
     if (renderer == NULL) {
         SDL_Log("Nem hozható letre a megjelenitő: %s", SDL_GetError());
         exit(1);

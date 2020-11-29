@@ -30,24 +30,6 @@ char billentyutochar(Uint32 const be){
         return '9';
 }
 
-/* Saját készítésű string másoló függvény
- * a bemeneten kapott ebbe stringbe belemásolja
- * az ezt stringet
- * */
-static void str_masol(char *ebbe, char* const ezt){
-    size_t i;
-    for (i = 0; ezt[i] != '\0'; ++i)
-        ebbe[i] = ezt[i];
-    ebbe[i] = '\0';
-}
-
-/* Az ehhez stringhez hozzáfűzi az ezt karakter
- * */
-static void egy_karakter_hozzafuz(char* ehhez, char const ezt){
-    ehhez[strlen(ehhez)] = ezt;
-    ehhez[strlen(ehhez) + 1] = '\0';
-}
-
 /* Egyel csökenti a bemenetként kapott string méretét
  * úgy hogy az utolsó karaktert eltávolítja
  * */
@@ -69,17 +51,20 @@ static void szam_bevisz(char* ebbe, Uint32 const szam_be, int const kenyszer){
     else{
         //tesztelő string
         char tesztelo[5 + 1];
-        tesztelo[0] = '\0';
+        strcpy(tesztelo, "\0");
         //tesztelőbe belemásoljuk a beviteli stringet
-        str_masol(tesztelo, ebbe);
+        strcpy(tesztelo, ebbe);
         //ne tudjuk teleírni nullával
         if (strcmp(tesztelo, "0") == 0)
-            tesztelo[0] = '\0';
+            strcpy(tesztelo, "\0");
         //hozzáfűzűkk a tesztelőhöz a bevitt számot
-        egy_karakter_hozzafuz(tesztelo, billentyutochar(szam_be));
+        char szam[2] = "\0";
+        szam[0] = billentyutochar(szam_be);
+        szam[1] = '\0';
+        strcat(tesztelo, szam);
         //ha teljesöl a kényszer akkor beleírjuk a beviteli stringbe
         if (atoi(tesztelo) <= kenyszer){
-            str_masol(ebbe, tesztelo);
+            strcpy(ebbe, tesztelo);
         }
         //egyébként meg kinullázzuk
         else {
@@ -121,16 +106,16 @@ void bevisz(Bevstring* bevstring, Uint32 szam_be){
     // beviszi a beviteli stringbe a számokat a 'szam_bevisz' segítségével
     switch (bevitel) {
         case Nepesseg:
-                szam_bevisz(bevstring->nep, szam_be, nep_max);
+            szam_bevisz(bevstring->nep, szam_be, nep_max);
             break;
         case Sugar:
-                szam_bevisz(bevstring->sug, szam_be, sug_max);
+            szam_bevisz(bevstring->sug, szam_be, sug_max);
             break;
         case Szazalek:
-                szam_bevisz(bevstring->szaz, szam_be, szaz_max);
+            szam_bevisz(bevstring->szaz, szam_be, szaz_max);
             break;
         case Ido:
-                szam_bevisz(bevstring->ido, szam_be, ido_max);
+            szam_bevisz(bevstring->ido, szam_be, ido_max);
             break;
     }
 }

@@ -26,10 +26,10 @@ int main(int argc, char *argv[]){
     betutipus[3].meret = 12;
 
     Bevstring bev;
-    bev.nep[0] = '\0';
-    bev.sug[0] = '\0';
-    bev.szaz[0] = '\0';
-    bev.ido[0] = '\0';
+    strcpy(bev.nep, "\0");
+    strcpy(bev.sug, "\0");
+    strcpy(bev.szaz, "\0");
+    strcpy(bev.ido, "\0");
 
     foglal(&szim);
     init_SDL();
@@ -66,6 +66,7 @@ int main(int argc, char *argv[]){
                 SDL_GetMouseState(&EX, &EY);
                 break;
             case SDL_MOUSEBUTTONUP:
+                printf("%s\n", bev.nep);
                 if (beallit){
                     megse();
                     bevitel_valaszt();
@@ -83,9 +84,9 @@ int main(int argc, char *argv[]){
             case SDL_KEYUP:
                 if (beallit && bevitel != Semmi && billentyutochar(ev.key.keysym.sym) >= '0'
                 && billentyutochar(ev.key.keysym.sym) <= '9' || ev.key.keysym.sym == SDLK_RETURN
-                || ev.key.keysym.sym == SDLK_BACKSPACE || ev.key.keysym.sym == SDLK_KP_ENTER){
+                || ev.key.keysym.sym == SDLK_BACKSPACE || ev.key.keysym.sym == SDLK_KP_ENTER)
                     bevisz(&bev, ev.key.keysym.sym);
-                }
+
                 if (ev.key.keysym.sym == SDLK_ESCAPE){
                     if (beallit)
                         beallit = false;

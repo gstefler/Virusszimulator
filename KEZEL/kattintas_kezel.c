@@ -135,10 +135,10 @@ void inditas(Szim* szim, int melyik, Bevstring* bev, bool* stop, Error* hiba){
        szim[melyik].elozo = 0;
        beallit = false;
        *stop = false;
-       bev->nep[0] = '\0';
-       bev->sug[0] = '\0';
-       bev->szaz[0] = '\0';
-       bev->ido[0] = '\0';
+       strcpy(bev->nep, "\0");
+       strcpy(bev->sug, "\0");
+       strcpy(bev->szaz, "\0");
+       strcpy(bev->ido, "\0");
    }
    else if (katt(EX, EY, x + 20, x + 20 + 200, y - 60, y - 20) && hiba->hibak_szama)
        bevitel = Hiba;

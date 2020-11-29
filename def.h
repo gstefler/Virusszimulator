@@ -2,13 +2,13 @@
 #define DEF_H
 
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <string.h>
 #include "debugmalloc.h"
 
 #define SZIMSZAM 3
