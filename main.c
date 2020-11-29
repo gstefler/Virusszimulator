@@ -45,13 +45,18 @@ int main(int argc, char *argv[]){
     SDL_Renderer* renderer;
     create(&window, &renderer);
 
+    //időzítő
     int s = 0;
     SDL_TimerID base = SDL_AddTimer(fps, idozit, NULL);
 
     //Eseményvezérelt LOOP
+    //változó ami a szimulációt szüneteltetheti
     bool stop = false;
+    //melyik szimulációval foglalkozunk
     int melyik;
+    //kilépés
     bool quit = false;
+    //hibaváltozó
     Error hiba;
     while (!quit){
         SDL_Event ev;
@@ -61,15 +66,19 @@ int main(int argc, char *argv[]){
                 SDL_GetMouseState(&EX, &EY);
                 break;
             case SDL_MOUSEBUTTONUP:
+                if (beallit){
+                    megse();
+                    bevitel_valaszt();
+                    inditas(szim, melyik, &bev, &stop, &hiba);
+                }
+                else{
+                    beall(szim, &stop, &melyik);
+                    torol(szim);
+                    ujraindit(szim);
+                    uj(szim, &stop, &melyik);
+                    svg_export_katt(szim, &export_szamlalo);
+                }
                 kilepes(&quit);
-                valt(szim, &stop, &melyik);
-                torol(szim);
-                ujraindit(szim);
-                uj(szim, &stop, &melyik);
-                bevitel_valaszt();
-                inditas(szim, melyik, &bev, &stop, &hiba);
-                svg_export_katt(szim, &export_szamlalo);
-                megse();
                 break;
             case SDL_KEYUP:
                 if (beallit && bevitel != Semmi && billentyutochar(ev.key.keysym.sym) >= '0'

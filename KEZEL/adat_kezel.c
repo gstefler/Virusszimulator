@@ -3,14 +3,14 @@
 extern int W, H;
 
 /*
-Filenak a neve a hibaüzenetekhez
-*/
-static const char* filenev = "kezel.h:";
+ * Filenak a neve a hibaüzenetekhez
+ * */
+static const char* filenev = "adat_kezel.c:";
 
 /*
-Láncolt listát felszabadító függvény
-A "mindent_szabadit" használja
-*/
+ * Láncolt listát felszabadító függvény
+ * A "mindent_szabadit" használja
+ * */
 static void graf_szabadit(Grafikon *g){
     GrafLista* szabadito = g->elso;
     while (szabadito != NULL){
@@ -20,10 +20,9 @@ static void graf_szabadit(Grafikon *g){
     }
 }
 
-/*
-Ez a fv takarít utánunk, tehát felszabadít mindent
-Belülről kifelé haladva
-*/
+/* Ez a fv takarít utánunk, tehát felszabadít mindent
+ * Belülről kifelé haladva
+ * */
 void mindent_szabadit(Szim **szim){
     Szim *tmp = *szim;
     for (int i = 0; i < SZIMSZAM; i++)
@@ -41,10 +40,10 @@ void mindent_szabadit(Szim **szim){
 }
 
 /*
-Ezt a függvényt csak a "Nepvaltoztat" használja
-Feladata visszatérni egy véletlen sebességgel ami nem nulla
-és a bemenetként kapott tartományban van( |veletlen_seb| = tart )
-*/
+ * Ezt a függvényt csak a "Nepvaltoztat" használja
+ * Feladata visszatérni egy véletlen sebességgel ami nem nulla
+ * és a bemenetként kapott tartományban van( |veletlen_seb| = tart )
+ * */
 static double veletlen_seb(void){
     double seb = (double)rand() / RAND_MAX * 2.0 - 1.0;
     while ((int)(seb * 100) == 0)
@@ -53,9 +52,9 @@ static double veletlen_seb(void){
 }
 
 /*
-Ez a fv szükséges minden szimuláció elindítása előtt.
-Akkor fut le ha változtatni szeretnénk a szimulációnk népméretét
-*/
+ * Ez a fv szükséges minden szimuláció elindítása előtt.
+ * Akkor fut le ha változtatni szeretnénk a szimulációnk népméretét
+ * */
 void nepvaltozat(Szim* szimulacio){
     if (szimulacio->graf->meret != 0) {
         graf_szabadit(szimulacio->graf);
@@ -76,7 +75,6 @@ void nepvaltozat(Szim* szimulacio){
         szimulacio->nep[i].hely.y = rand() % realtoint(W * TART_SZEL + 1 - R);
         szimulacio->nep[i].hely.vx = veletlen_seb();
         szimulacio->nep[i].hely.vy = veletlen_seb();
-        //printf("%d | vx: %.4f vy: %.4f\n",i , szimulacio->nep[i].hely.vx, szimulacio->nep[i].hely.vy);
         szimulacio->nep[i].miota = 0;
         szimulacio->nep[i].mennyit = 0;
         szimulacio->nep[i].allapot = Fogekony;
@@ -86,11 +84,11 @@ void nepvaltozat(Szim* szimulacio){
 }
 
 /*
-Grafikonban lévő láncolt lista inicializálása
-Létrehoz egy első elemet amiben 1db fertőzött van,
-mert ugye a 0. időpillanatban 1 fertőzött van
-és ez a lista utolsó eleme(jelenleg)
-*/
+ * Grafikonban lévő láncolt lista inicializálása
+ * Létrehoz egy első elemet amiben 1db fertőzött van,
+ * mert ugye a 0. időpillanatban 1 fertőzött van
+ * és ez a lista utolsó eleme(jelenleg)
+ * */
 Grafikon* graf_init(void){
     GrafLista *elso = (GrafLista*)malloc(sizeof(GrafLista));
     if (elso == NULL)
@@ -117,9 +115,9 @@ Grafikon* graf_init(void){
 }
 
 /*
-Ez a legelső foglalás, ami szimulációkból álló tömböt hoz létre
-A bemenetként kapott tömb-be foglalja bele
-*/
+ * Ez a legelső foglalás, ami szimulációkból álló tömböt hoz létre
+ * A bemenetként kapott tömb-be foglalja bele
+ * */
 void foglal(Szim **s){
     Szim *tmps = (Szim*)malloc(SZIMSZAM * sizeof(Szim));
     if (tmps == NULL)
@@ -135,16 +133,18 @@ void foglal(Szim **s){
         tmps[i].rmax = 0;
         tmps[i].elozo = 0;
         /*
-        Minden egyes szimuláción belül lefoglalunk egy 0 méretű
-        Egyed* típúsú tömböt is hogy késöbb ezt csak átméretezni kelljen
-        */
+         * Minden egyes szimuláción belül lefoglalunk egy 0 méretű
+         * Egyed* típúsú tömböt is hogy késöbb ezt csak átméretezni kelljen
+         * */
         tmps[i].nep = (Egyed*)malloc(0 * sizeof(Egyed));
         if (tmps == NULL)
         {
             printf("%s Egyed foglalási hiba!", filenev);
             exit(1);
         }
+        //szimuláció nem működő állapotba állítása
         tmps[i].all = false;
+        //grafkion inicializálása
         tmps[i].graf = graf_init();
     }
     *s = tmps;

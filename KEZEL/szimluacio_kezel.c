@@ -137,6 +137,8 @@ static void seb_szam(Hely *hely){
         *y += *yv;
 }
 
+/* Az r értékének a kiszámolása a jelen és az előző állapotbeli értékek elosztásával
+ * */
 static void r_szamol(Szim* szim, int i){
     double uj_r0 = 0;
     if (szim[i].elozo != 0)
@@ -150,9 +152,11 @@ static void r_szamol(Szim* szim, int i){
 }
 
 /*
-Ítt gyűlik össze az összes szimulációhoz szükséges függvény
-és fut le a megfelelő sorrendben
-*/
+ * Ítt gyűlik össze az összes szimulációhoz szükséges függvény
+ * és fut le a megfelelő sorrendben
+ * a mindent változó jelzi azt hogy csak a sebességet szeretnénk szimulálni, vagy
+ * mindent, azaz számolni a fertőzés, hozzáfűzni a grafikonhoz és számolni az R értékét
+ * */
 void szimulal(Szim* szimulacio, bool mindent){
     for (int i = 0; i < SZIMSZAM; ++i) {
         if (szimulacio[i].all && szimulacio[i].graf->utso->fert != 0){

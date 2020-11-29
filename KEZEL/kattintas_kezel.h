@@ -7,7 +7,7 @@
 #include "../FILE/SVG.h"
 
 void kilepes(bool* quit);
-void valt(Szim* const szim, bool* stop, int* melyiket);
+void beall(Szim* const szim, bool* stop, int* melyiket);
 void torol(Szim* szim);
 void ujraindit(Szim* szim);
 void uj(Szim* szim, bool* stop, int* melyik);

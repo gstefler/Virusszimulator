@@ -3,6 +3,10 @@
 extern Bevitel bevitel;
 extern Betutipus *betutipus;
 
+/* Mivel a bevitel csak számból áll ezért
+ * ez a függvény megakpja a bemenetet és visszatér
+ * az adottt számhoz tartozó karakterrel
+ * */
 char billentyutochar(Uint32 const be){
     if (be == SDLK_0 || be == SDLK_KP_0)
         return '0';
@@ -26,6 +30,10 @@ char billentyutochar(Uint32 const be){
         return '9';
 }
 
+/* Saját készítésű string másoló függvény
+ * a bemeneten kapott ebbe stringbe belemásolja
+ * az ezt stringet
+ * */
 static void str_masol(char *ebbe, char* const ezt){
     size_t i;
     for (i = 0; ezt[i] != '\0'; ++i)
@@ -33,16 +41,27 @@ static void str_masol(char *ebbe, char* const ezt){
     ebbe[i] = '\0';
 }
 
+/* Az ehhez stringhez hozzáfűzi az ezt karakter
+ * */
 static void egy_karakter_hozzafuz(char* ehhez, char const ezt){
     ehhez[strlen(ehhez)] = ezt;
     ehhez[strlen(ehhez) + 1] = '\0';
 }
 
+/* Egyel csökenti a bemenetként kapott string méretét
+ * úgy hogy az utolsó karaktert eltávolítja
+ * */
 static void str_eggyel_csokkent(char* be){
     be[strlen(be) - 1] = '\0';
 }
 
+/* számok beviteléért felelős
+ * ebbe: ebbe a stringbe rakjuk be a beolvasott számot
+ * szam_be: a szám amit hozzá akaruk fűzni
+ * kényszer: kényszer ami meghatározza hogy mekkora lehet a bevitt szám max mérete
+ * */
 static void szam_bevisz(char* ebbe, Uint32 const szam_be, int const kenyszer){
+    //ha backspace
     if (szam_be == SDLK_BACKSPACE){
         //levágjuk a legutsó elemet
         str_eggyel_csokkent(ebbe);
@@ -53,6 +72,7 @@ static void szam_bevisz(char* ebbe, Uint32 const szam_be, int const kenyszer){
         tesztelo[0] = '\0';
         //tesztelőbe belemásoljuk a beviteli stringet
         str_masol(tesztelo, ebbe);
+        //ne tudjuk teleírni nullával
         if (strcmp(tesztelo, "0") == 0)
             tesztelo[0] = '\0';
         //hozzáfűzűkk a tesztelőhöz a bevitt számot
@@ -61,12 +81,16 @@ static void szam_bevisz(char* ebbe, Uint32 const szam_be, int const kenyszer){
         if (atoi(tesztelo) <= kenyszer){
             str_masol(ebbe, tesztelo);
         }
+        //egyébként meg kinullázzuk
         else {
             ebbe[0] = '\0';
         }
     }
 }
 
+/* Kezeli a beviteli eseteket állapotgépesen
+ * akkor hívodik meg, ha valamilyen számot, entert vagy backspacet nyomunk
+ * */
 void bevisz(Bevstring* bevstring, Uint32 szam_be){
     //kényszerek az értékekre
     int nep_max = 2000;
@@ -94,6 +118,7 @@ void bevisz(Bevstring* bevstring, Uint32 szam_be){
         return;
     }
 
+    // beviszi a beviteli stringbe a számokat a 'szam_bevisz' segítségével
     switch (bevitel) {
         case Nepesseg:
                 szam_bevisz(bevstring->nep, szam_be, nep_max);

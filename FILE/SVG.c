@@ -13,7 +13,7 @@ static void pontok_stringbe(char** fert_string, char** gyogy_string, Grafikon* g
 
     /* felső becslés a karakterek hosszára:
      * 4: első koordináta max mérete
-     * 4: másodi koordináta max mérete
+     * 4: második koordináta max mérete
      * 2: space és vessző
      * */
     int karakter_per_koordinata = 4 + 4 + 2;
