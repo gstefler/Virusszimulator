@@ -28,10 +28,6 @@ void szim_info(SDL_Renderer* renderer, Szim* const szim, int i){
     int y2 = y1 + W * TART_SZEL - 40;
     boxRGBA(renderer, x1, y1, x2, y2, 220, 220, 220, 100);
     Bevstring info;
-    char r0[15];
-    char r0_max[15];
-    sprintf(r0, "R = %.2f", szim[i].R0);
-    sprintf(r0_max, "R max = %.2f", szim[i].rmax);
     sprintf(info.nep, "%d", szim[i].nepmeret);
     sprintf(info.sug, "%d", szim[i].virus.r);
     sprintf(info.szaz, "%d", (int)(szim[i].virus.p * 100));
@@ -45,8 +41,10 @@ void szim_info(SDL_Renderer* renderer, Szim* const szim, int i){
     kiir(renderer, betutipus[1].tipus, szurke, "%", x1 + 135, y1 + 73);
     kiir(renderer, betutipus[1].tipus, szurke, "gyogy. idö = ", x1 + 5, y1 + 104);
     kiir(renderer, betutipus[1].tipus, szurke, info.ido, x1 + 110, y1 + 105);
-    kiir(renderer, betutipus[1].tipus, szurke, r0, x1 + 5, y1 + 137);
-    kiir(renderer, betutipus[1].tipus, szurke, r0_max, x1 + 5, y1 + 169);
+    boxRGBA(renderer, x1 + 5, y1 + 136, x1 + 25, y1 + 156, 220, 0, 0, 255);
+    boxRGBA(renderer, x1 + 5, y1 + 168, x1 + 25, y1 + 188, 0, 220, 0, 255);
+    kiir(renderer, betutipus[1].tipus, szurke, "fertözöttek", x1 + 35, y1 + 140);
+    kiir(renderer, betutipus[1].tipus, szurke, "gyógyultak", x1 + 35, y1 + 172);
     if (szim[i].graf->utso->fert == 0){
         kiir(renderer, betutipus[0].tipus, piros, "KIHALT!", x1 + 60, y1 + 220);
     }

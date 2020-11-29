@@ -84,9 +84,6 @@ typedef struct Szim {
     Egyed *nep;
     Virus virus;
     Grafikon *graf;
-    double R0;
-    double rmax;
-    int elozo;
     bool all;
 }Szim;
 

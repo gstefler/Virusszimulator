@@ -129,9 +129,7 @@ void foglal(Szim **s){
 
     for (int i = 0; i < SZIMSZAM; i++)
     {
-        tmps[i].R0 = 0;
-        tmps[i].rmax = 0;
-        tmps[i].elozo = 0;
+        tmps[i].nepmeret = 10;
         /*
          * Minden egyes szimuláción belül lefoglalunk egy 0 méretű
          * Egyed* típúsú tömböt is hogy késöbb ezt csak átméretezni kelljen
@@ -146,6 +144,7 @@ void foglal(Szim **s){
         tmps[i].all = false;
         //grafkion inicializálása
         tmps[i].graf = graf_init();
+        nepvaltozat(&tmps[i]);
     }
     *s = tmps;
 }

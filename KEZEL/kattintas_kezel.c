@@ -44,8 +44,6 @@ void ujraindit(Szim* szim){
         int y = H * SAV_SZEL + 50 + i * (W * TART_SZEL + 50) + 50;
         if (szim[i].all && katt(EX, EY, x,x + 100, y, y + 30)){
             nepvaltozat(&szim[i]);
-            szim[i].rmax = 0;
-            szim[i].elozo = 0;
         }
     }
 }
@@ -131,8 +129,6 @@ void inditas(Szim* szim, int melyik, Bevstring* bev, bool* stop, Error* hiba){
        szim[melyik].virus.p = atoi(bev->szaz) / 100.0;
        szim[melyik].virus.recover = atoi(bev->ido);
        nepvaltozat(&szim[melyik]);
-       szim[melyik].rmax = 0;
-       szim[melyik].elozo = 0;
        beallit = false;
        *stop = false;
        strcpy(bev->nep, "\0");

@@ -77,8 +77,6 @@ közel lévő emberek a virus paramétere szerint fertőzőttek lesznek-e,
 ha meggyógyulnak azt is kezeli
 */
 static void tesztel(Szim* szimulacio, int i){
-    //rögzíti hogy az előző időpillanatban mennyi volt a fertőzött
-    szimulacio[i].elozo = fertozottek(szimulacio);
     Egyed* nep = szimulacio[i].nep;
     //végig megyünk az összes egyeden
     for (int j = 0; j < szimulacio[i].nepmeret; ++j) {
@@ -137,20 +135,6 @@ static void seb_szam(Hely *hely){
         *y += *yv;
 }
 
-/* Az r értékének a kiszámolása a jelen és az előző állapotbeli értékek elosztásával
- * */
-static void r_szamol(Szim* szim, int i){
-    double uj_r0 = 0;
-    if (szim[i].elozo != 0)
-        uj_r0 = (double)szim[i].graf->utso->fert / (double)szim[i].elozo;
-
-    if (szim[i].rmax < uj_r0)
-        szim[i].rmax = uj_r0;
-    if (szim[i].graf->utso->fert != 0){
-        szim[i].R0 = uj_r0;
-    }
-}
-
 /*
  * Ítt gyűlik össze az összes szimulációhoz szükséges függvény
  * és fut le a megfelelő sorrendben
@@ -163,7 +147,6 @@ void szimulal(Szim* szimulacio, bool mindent){
             if (mindent) {
                 tesztel(szimulacio, i);
                 bovit(&szimulacio[i], fertozottek(&szimulacio[i]), gyogyultak(&szimulacio[i]));
-                r_szamol(szimulacio, i);
             }
             for (int j = 0; j < szimulacio[i].nepmeret; ++j){
                 seb_szam(&szimulacio[i].nep[j].hely);
