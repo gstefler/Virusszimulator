@@ -10,5 +10,5 @@ Minden aktív szimuláció mellé kirajzolódik egy grafikon ami a mellete lév�
 1. **ESC** - kilép a programból, vagy ha a beállításokban vagyunk akkor abból
 2. **SPACE** - a szüneteltetés megszüntetése vagy aktiválása
 ## Programozói rész
-A programot linux alatt a *CLion IDE* segítségével készítettem. Fordításhoz a **CMake**-et. Használt könyvtárak: **SDL2**
+A programot linux alatt a *CLion IDE* segítségével készítettem. Használt könyvtárak: **SDL2**
 Az összes függvény működésének részletes leírása megtalálható a kódban.
