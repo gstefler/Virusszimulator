@@ -26,6 +26,7 @@ void szim_rajzol(SDL_Renderer *renderer, Szim* const szimulacio, int i){
     }
 }
 
+//ez csak a keretet rajzolja ki
 void keret(SDL_Renderer *renderer, Szim* const szim, int i){
     int x1 = W / 4 - W * TART_SZEL;
     int y1 = H * SAV_SZEL + 50 + i * (W * TART_SZEL + 50);

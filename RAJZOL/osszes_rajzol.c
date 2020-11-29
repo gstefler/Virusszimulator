@@ -16,6 +16,9 @@ static void draw_gradient(SDL_Renderer *renderer){
 }
 SDL_Color sotet = {22, 22, 22};
 
+/*
+ * Egyben az összes többi rajzolós fv és így csak egyszer kell meghívni
+ * */
 void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstring, int const melyik, Error const hiba, bool stop){
     //Rajzolás előtti felkészülés
     SDL_SetRenderDrawColor(renderer,22,22,22,255);

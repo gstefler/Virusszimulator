@@ -19,6 +19,9 @@ void exit_gomb(SDL_Renderer* renderer, bool hower){
     }
 }
 
+/*
+ * Kirajzolja a jobb szélén az adott szimuláció információit
+ */
 void szim_info(SDL_Renderer* renderer, Szim* const szim, int i){
     SDL_Color szurke = {20, 20, 20, 255};
     SDL_Color piros = {80, 0, 60};
@@ -50,6 +53,9 @@ void szim_info(SDL_Renderer* renderer, Szim* const szim, int i){
     }
 }
 
+/*
+ * Bemásol az ide stringbe egy számot vagy egy '-'-t ha nulla  
+ * */
 static void ertek_stringbe_masol(char* ide, char const ellenorzo[]){
     if (atoi(ellenorzo) != 0)
         sprintf(ide, "%d", atoi(ellenorzo));
@@ -57,7 +63,9 @@ static void ertek_stringbe_masol(char* ide, char const ellenorzo[]){
         sprintf(ide, "-");
 }
 
-
+/* 
+ * Kirajzolja a beállítások menüt
+ * */
 void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const melyik, Error const hiba){
     SDL_Color vilagos = {200, 200, 200, 255};
     SDL_Color vilagos_hal = {200, 200, 200, 150};
@@ -157,6 +165,9 @@ void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const mely
     }
 }
 
+/*
+ * Beállítások a szimuláció mellett
+ * */
 void valt_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     SDL_Color sotet = {30, 30, 30, 255};
     SDL_Color sotet_hal = {30, 30, 30, 150};
@@ -173,6 +184,9 @@ void valt_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     }
 }
 
+/*
+ * Szimuláció újraindítása
+ * */
 void ujraindit_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     SDL_Color sotet = {30, 30, 30, 255};
     SDL_Color sotet_hal = {30, 30, 30, 150};
@@ -189,6 +203,9 @@ void ujraindit_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     }
 }
 
+/*
+ * Szimuláció törlése
+ * */
 void torol_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     SDL_Color sotet = {220, 220, 220, 255};
     SDL_Color sotet_hal = {230, 230, 230, 150};
@@ -205,6 +222,9 @@ void torol_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     }
 }
 
+/*
+ * Svg exportálása
+ * */
 void export_svg(SDL_Renderer* renderer, Szim* const szim, int i){
     SDL_Color sotet = {30, 30, 30, 255};
     SDL_Color sotet_hal = {30, 30, 30, 150};
@@ -221,6 +241,9 @@ void export_svg(SDL_Renderer* renderer, Szim* const szim, int i){
     }
 }
 
+/*
+ * Új szimuláció hozzáadása
+ * */
 void hozzaad_gomb(SDL_Renderer* renderer, Szim* const szim, int i){
     if (!szim[i].all){
         SDL_Color sotet = {30, 30, 30, 255};

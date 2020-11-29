@@ -80,11 +80,11 @@ typedef struct Grafikon
 Szimulációkat leíró típus, benne van minden infó egy adott szimulációrol
 */
 typedef struct Szim {
-    int nepmeret;
-    Egyed *nep;
-    Virus virus;
-    Grafikon *graf;
-    bool all;
+    int nepmeret; //népesség mérete
+    Egyed *nep; //népesség egyedeinek tömbje
+    Virus virus; //vírusparaméterei
+    Grafikon *graf; //grafikon eleminek láncolt listája
+    bool all; //alvó állapot
 }Szim;
 
 /*
@@ -95,14 +95,17 @@ typedef struct Betutipus{
     int meret; //betű mérete
 }Betutipus;
 
+//típús amiben a beviteli értékek vannak
 typedef struct Bevstring{
     char nep[4 + 1], sug[2 + 1], szaz[3 + 1], ido[3 + 1];
 }Bevstring;
 
+//bevitel melyik állapotában vagyunk éppen
 typedef enum Bevitel {
     Semmi, Nepesseg, Sugar, Szazalek, Ido, Hiba
 } Bevitel;
 
+//típus a beviteli hibának
 typedef struct Error{
     Bevitel hibak[4];
     int hibak_szama;

@@ -2,6 +2,7 @@
 
 extern int W, H;
 
+/*betűtípus inicializálása*/
 void init_TTF(Betutipus *pbetutipus, int db){
     if (TTF_Init() != 0){
         SDL_Log("TTF inicializálási hiba! %s\n", TTF_GetError());

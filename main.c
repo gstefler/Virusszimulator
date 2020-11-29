@@ -18,6 +18,7 @@ int main(int argc, char *argv[]){
     Szim* szim;
     int export_szamlalo = 0;
 
+    //betűtípus betöltése több méretben
     int bet_db = 4;
     betutipus = (Betutipus*)malloc(bet_db * sizeof(Betutipus));
     betutipus[0].meret = 20;
@@ -25,6 +26,7 @@ int main(int argc, char *argv[]){
     betutipus[2].meret = 40;
     betutipus[3].meret = 12;
 
+    //beviteli string létrehozása és inicializálása
     Bevstring bev;
     strcpy(bev.nep, "\0");
     strcpy(bev.sug, "\0");
@@ -34,10 +36,6 @@ int main(int argc, char *argv[]){
     foglal(&szim);
     init_SDL();
     init_TTF(betutipus, bet_db);
-/*
-    nepvaltozat(szim);
-    nepvaltozat(szim + 1);
-    nepvaltozat(szim + 2);*/
 
     SDL_Window* window;
     SDL_Renderer* renderer;
@@ -120,6 +118,7 @@ int main(int argc, char *argv[]){
     SDL_DestroyWindow(window);
     window = NULL;
     mindent_szabadit(&szim);
+    //betűtípus szabadítása
     for (int i = 0; i < bet_db; ++i) {
         TTF_CloseFont(betutipus[i].tipus);
     }

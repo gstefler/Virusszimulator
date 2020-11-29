@@ -18,6 +18,7 @@ void kiir(SDL_Renderer *renderer, TTF_Font *font, SDL_Color szin, char *szov, in
     SDL_DestroyTexture(felirat_t);
 }
 
+//Normálisan(5től fölfelé) kerekít egy valós számot egésszé
 int realtoint(double r){
     if ((int)(10 * r) / 10 < 5)
         return (int)r;
