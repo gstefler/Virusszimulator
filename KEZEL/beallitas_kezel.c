@@ -68,7 +68,7 @@ static void szam_bevisz(char* ebbe, Uint32 const szam_be, int const kenyszer){
         }
         //egyébként meg kinullázzuk
         else {
-            ebbe[0] = '\0';
+            strcpy(ebbe, "\0");
         }
     }
 }

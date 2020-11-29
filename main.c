@@ -66,7 +66,6 @@ int main(int argc, char *argv[]){
                 SDL_GetMouseState(&EX, &EY);
                 break;
             case SDL_MOUSEBUTTONUP:
-                printf("%s\n", bev.nep);
                 if (beallit){
                     megse();
                     bevitel_valaszt();
