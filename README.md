@@ -1,4 +1,4 @@
-# Vírus szimulátor
+# Vírusszimulátor
 ## Feladat:
 Egy olyan program készítése amely képes bizonyos kereteken belül egy vírus terjedését leszimulálni.
 A kész programban a felhasználó képes egyszerre három egymástól különböző szimulációt futtatni, ezeknek a méretét változtatni.
