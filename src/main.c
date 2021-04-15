@@ -1,10 +1,10 @@
 #include "def.h"
-#include "KEZEL/adat_kezel.h"
-#include "SDL_FV/sdl_init.h"
-#include "KEZEL/szimluacio_kezel.h"
-#include "RAJZOL/osszes_rajzol.h"
-#include "KEZEL/kattintas_kezel.h"
-#include "KEZEL/beallitas_kezel.h"
+#include "adat_kezel.h"
+#include "sdl_init.h"
+#include "szimluacio_kezel.h"
+#include "osszes_rajzol.h"
+#include "kattintas_kezel.h"
+#include "beallitas_kezel.h"
 
 int W, H;
 int EX, EY;

@@ -1,10 +1,10 @@
 #ifndef NHF_KATTINTAS_KEZEL_H
 #define NHF_KATTINTAS_KEZEL_H
 
-#include "../def.h"
-#include "../globalis_fvek.h"
+#include "def.h"
+#include "globalis_fvek.h"
 #include "adat_kezel.h"
-#include "../FILE/SVG.h"
+#include "SVG.h"
 
 void kilepes(bool* quit);
 void beall(Szim* const szim, bool* stop, int* melyiket);

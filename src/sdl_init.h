@@ -1,7 +1,7 @@
 #ifndef SDL_INIT_H
 #define SDL_INIT_H
 
-#include "../def.h"
+#include "def.h"
 
 void init_TTF(Betutipus *pbetutipus, int db);
 void init_SDL(void);

@@ -1,8 +1,8 @@
 #ifndef NHF_DINAMIKUS_ELEMEK_RAJZOL_H
 #define NHF_DINAMIKUS_ELEMEK_RAJZOL_H
 
-#include "../def.h"
-#include "../globalis_fvek.h"
+#include "def.h"
+#include "globalis_fvek.h"
 
 void exit_gomb(SDL_Renderer* renderer, bool hower);
 void beallitas(SDL_Renderer* renderer, Bevstring const bevstring, int const melyik, Error const hiba);

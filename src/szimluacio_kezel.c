@@ -79,6 +79,7 @@ ha meggyógyulnak azt is kezeli
 static void tesztel(Szim* szimulacio, int i){
     Egyed* nep = szimulacio[i].nep;
     //végig megyünk az összes egyeden
+    #pragma omp parallel for schedule(dynamic, 8)
     for (int j = 0; j < szimulacio[i].nepmeret; ++j) {
         //ha fertőzött
         if (nep[j].allapot == Fertozott){
@@ -142,6 +143,7 @@ static void seb_szam(Hely *hely){
  * mindent, azaz számolni a fertőzés, hozzáfűzni a grafikonhoz és számolni az R értékét
  * */
 void szimulal(Szim* szimulacio, bool mindent){
+    #pragma omp parallel for
     for (int i = 0; i < SZIMSZAM; ++i) {
         if (szimulacio[i].all && szimulacio[i].graf->utso->fert != 0){
             if (mindent) {

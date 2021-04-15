@@ -1,8 +1,8 @@
 #ifndef NHF_GRAF_RAJZOL_H
 #define NHF_GRAF_RAJZOL_H
 
-#include "../def.h"
-#include "../globalis_fvek.h"
+#include "def.h"
+#include "globalis_fvek.h"
 
 enum Melyik{Fert, Gyogy, X_koo};
 
