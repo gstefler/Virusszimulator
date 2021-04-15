@@ -15,6 +15,7 @@ A programot linux alatt a *CLion IDE* segítségével készítettem. Használt k
 Az összes függvény működésének részletes leírása megtalálható a kódban.
 **Fontos**, hogy legyen a betűtípus az executable mellet font.ttf néven, különben nem fog elindulni!
 ## **Futtatás**
+> Ha nem szeretnél bajlódni a fordítással, töltsd le a neked megfelelő release-t!
 #### **Windows:** 
 > [SDL2](http://libsdl.org/release/SDL2-devel-2.0.14-mingw.tar.gz)
 > [SDL2_ttf](https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15-win32-x64.zip)
