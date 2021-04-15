@@ -14,14 +14,17 @@ Minden aktív szimuláció mellé kirajzolódik egy grafikon ami a mellete lév�
 A programot linux alatt a *CLion IDE* segítségével készítettem. Használt könyvtárak: **SDL2**
 Az összes függvény működésének részletes leírása megtalálható a kódban.
 **Fontos**, hogy legyen a betűtípus az executable mellet font.ttf néven, különben nem fog elindulni!
-## Futtatás
-**Windows:** 
-> [SDL2](http://libsdl.org/release/SDL2-devel-2.0.14-mingw.tar.gz)(MinGW64)
-> [SDL2_ttf](https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15-win32-x64.zip)(MinGW64)
-> [SDL2_gfx](https://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/)(MinGW64) 
-#### MinGW64: `gcc -g *.c -o szimulator.exe -I<path to SDL2 include dirs> -L<path to SDL2 lib dirs> -lmingw32 -lSDL2main -LSDL2_ttf -lSDL2_gfx -O3 -fopenmp`
-**Linux**
+## **Futtatás**
+#### **Windows:** 
+> [SDL2](http://libsdl.org/release/SDL2-devel-2.0.14-mingw.tar.gz) (MinGW64)
+> [SDL2_ttf](https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15-win32-x64.zip) (MinGW64)
+> [SDL2_gfx](https://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/) (MinGW64) 
+
+**MinGW64:** `gcc -g *.c -o szimulator.exe -I<path to SDL2 include dirs> -L<path to SDL2 lib dirs> -lmingw32 -lSDL2main -LSDL2_ttf -lSDL2_gfx -O3 -fopenmp`
+
+#### **Linux**
 > SDL2 letöltése **GCC**-hez: `sudo apt install libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev`
-#### Fordítás **GCC**-vel: ```gcc -g *.c -o szimulator `sdl2-config --cflags --libs` -lSDL2_gfx -lSDL2_ttf -lSDL2_image -lSDL2_mixer```
+
+**GCC:** ```gcc -g *.c -o szimulator `sdl2-config --cflags --libs` -lSDL2_gfx -lSDL2_ttf -lSDL2_image -lSDL2_mixer```
 ## SVG Output
 ![exportsvg](https://github.com/steflergabor/Virusszimulator/blob/main/img/szim_0_x0.svg)
