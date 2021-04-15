@@ -16,9 +16,9 @@ Az összes függvény működésének részletes leírása megtalálható a kód
 **Fontos**, hogy legyen a betűtípus az executable mellet font.ttf néven, különben nem fog elindulni!
 ## **Futtatás**
 #### **Windows:** 
-> [SDL2](http://libsdl.org/release/SDL2-devel-2.0.14-mingw.tar.gz) (MinGW64)
-> [SDL2_ttf](https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15-win32-x64.zip) (MinGW64)
-> [SDL2_gfx](https://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/) (MinGW64) 
+> [SDL2](http://libsdl.org/release/SDL2-devel-2.0.14-mingw.tar.gz)
+> [SDL2_ttf](https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15-win32-x64.zip)
+> [SDL2_gfx](https://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/) (MinGW64)
 
 **MinGW64:** `gcc -g *.c -o szimulator.exe -I<path to SDL2 include dirs> -L<path to SDL2 lib dirs> -lmingw32 -lSDL2main -LSDL2_ttf -lSDL2_gfx -O3 -fopenmp`
 
