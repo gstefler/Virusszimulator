@@ -1,4 +1,5 @@
 # Vírusszimulátor
+![enter image description here](https://github.com/steflergabor/Virusszimulator/blob/main/img/program.png)
 ## Feladat:
 Egy olyan program készítése amely képes bizonyos kereteken belül egy vírus terjedését leszimulálni.
 A kész programban a felhasználó képes egyszerre három egymástól különböző szimulációt futtatni, ezeknek a méretét változtatni.
@@ -13,3 +14,5 @@ Minden aktív szimuláció mellé kirajzolódik egy grafikon ami a mellete lév�
 A programot linux alatt a *CLion IDE* segítségével készítettem. Használt könyvtárak: **SDL2**
 Az összes függvény működésének részletes leírása megtalálható a kódban.
 **Fontos**, hogy legyen a betűtípus az executable mellet font.ttf néven, különben nem fog elindulni!
+## SVG Output:
+![enter image description here](https://github.com/steflergabor/Virusszimulator/blob/main/img/szim_0_x0.svg)
