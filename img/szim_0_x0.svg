@@ -2,14 +2,14 @@
      baseProfile="full"
      width="800" height="600"
      xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#202020" />
-<polygon points="20,420 36,420 53,406 70,396 87,385 104,353 121,324 138,303 155,275 172,274 188,268 205,262 222,274 239,287 256,296 273,309 290,313 307,317 324,325 340,338 357,350 374,357 391,368 408,376 425,387 442,394 459,397 476,400 492,403 509,405 526,408 543,410 560,411 577,414 594,415 611,417 628,417 644,418 661,418 678,418 695,418 712,420 729,420 746,420 763,420 780,420 780,420 " style="fill:red;" />
-<polygon points="20,20 36,20 53,20 70,20 87,20 104,20 121,20 138,20 155,20 172,34 188,44 205,55 222,87 239,116 256,137 273,165 290,180 307,197 324,214 340,233 357,250 374,262 391,276 408,287 425,300 442,309 459,315 476,320 492,325 509,328 526,332 543,334 560,336 577,338 594,341 611,343 628,344 644,344 661,344 678,345 695,345 712,346 729,346 746,347 763,347 780,347 780,20 " style="fill:green;" />
+<polygon points="20,420 49,420 78,406 107,387 136,376 166,361 195,339 224,315 253,318 283,308 312,312 341,322 370,355 400,362 429,376 458,380 487,388 516,392 546,400 575,406 604,412 633,416 663,418 692,418 721,420 750,420 780,420 780,420 " style="fill:red;" />
+<polygon points="20,20 49,20 78,20 107,20 136,20 166,20 195,20 224,34 253,53 283,64 312,79 341,101 370,139 400,156 429,176 458,187 487,200 516,204 546,214 575,220 604,227 633,232 663,233 692,234 721,235 750,236 780,236 780,20 " style="fill:green;" />
 <line x1="20" y1="20" x2="20" y2="420" style="stroke:rgb(220,220,220);stroke-width:2" /><line x1="20" y1="420" x2="780" y2="420" style="stroke:rgb(220,220,220);stroke-width:2" /><rect x="28" y="15" width="265" height="20" fill="#6D454C" />
 <text x="30" y="30" fill="white" font-size="16">fertőzöttek / gyógyultak | népesség: 1000</text>
 <text x="780" y="440" fill="white" text-anchor="end" font-size="16">idő</text>
 <text x="20" y="460" fill="white" text-anchor="start" text-decoration="underline" font-size="20">Szimuláció paraméterei</text>
 <text x="25" y="490" fill="white" text-anchor="start" font-size="16">népesség mérete: 1000 fő</text>
-<text x="25" y="515" fill="white" text-anchor="start" font-size="16">fertőzés sugara: 25 egység</text>
-<text x="25" y="540" fill="white" text-anchor="start" font-size="16">fertőzés esélye: 35%</text>
-<text x="25" y="565" fill="white" text-anchor="start" font-size="16">gyógyulás ideje: 8 egység</text>
+<text x="25" y="515" fill="white" text-anchor="start" font-size="16">fertőzés sugara: 50 egység</text>
+<text x="25" y="540" fill="white" text-anchor="start" font-size="16">fertőzés esélye: 10%</text>
+<text x="25" y="565" fill="white" text-anchor="start" font-size="16">gyógyulás ideje: 6 egység</text>
 </svg>

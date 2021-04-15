@@ -30,7 +30,7 @@ void rajzolas(SDL_Renderer* renderer, Szim* const szim, Bevstring const bevstrin
     //Felső sáv kirajzolása
     boxRGBA(renderer, 0, 0, W, H * SAV_SZEL, 200, 200, 200, 255);
     //felső sáv szöveg kiírása
-    kiir(renderer, betutipus[0].tipus, sotet, "Vírus szimulátor", W/2 - 80, 8);
+    kiir(renderer, betutipus[0].tipus, sotet, "Vírusszimulátor", W/2 - 80, 8);
     //
     if (stop)
         kiir(renderer, betutipus[1].tipus, sotet, "SZÜNETEL", 10, 8);
