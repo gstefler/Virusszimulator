@@ -1,5 +1,6 @@
 # Vírusszimulátor
-![enter image description here](https://github.com/steflergabor/Virusszimulator/blob/main/img/program.png)
+![static image](https://github.com/steflergabor/Virusszimulator/blob/main/img/program.png)
+![szim gif](https://github.com/steflergabor/Virusszimulator/blob/main/img/szim.gif)
 ## Feladat:
 Egy olyan program készítése amely képes bizonyos kereteken belül egy vírus terjedését leszimulálni.
 A kész programban a felhasználó képes egyszerre három egymástól különböző szimulációt futtatni, ezeknek a méretét változtatni.
