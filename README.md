@@ -1,5 +1,4 @@
 # Vírusszimulátor
-![static image](https://github.com/steflergabor/Virusszimulator/blob/main/img/program.png)
 ![szim gif](https://github.com/steflergabor/Virusszimulator/blob/main/img/szim.gif)
 ## Feladat:
 Egy olyan program készítése amely képes bizonyos kereteken belül egy vírus terjedését leszimulálni.
